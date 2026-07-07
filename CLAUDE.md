@@ -60,3 +60,4 @@ If `index.html` itself changed, also `node --check` the extracted `<script>` blo
 - UI text is Chinese-first (the audience is Chinese students); keep new UI strings consistent.
 - Commit as `tbukuai-coder <tbukuai@gmail.com>` (already set repo-locally).
 - Update `README.md` alongside any change to the data format or level list.
+- `ROADMAP.md` tracks planned features — check items off when implemented, and move them to its Done section.

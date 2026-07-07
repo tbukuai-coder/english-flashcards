@@ -6,81 +6,124 @@
 <title>单词闪卡 · English Flashcards</title>
 <style>
   :root{
-    --bg:#f4f6fb; --panel:#ffffff; --ink:#1c2340; --muted:#6b7394;
-    --line:#e3e7f2; --accent:#4f6df5; --accent2:#8b5cf6; --good:#16a34a;
-    --mid:#d97706; --bad:#dc2626; --shadow:0 10px 30px rgba(28,35,64,.10);
-    --radius:20px;
+    --bg1:#eef2ff; --bg2:#fdf2f8; --panel:#ffffff; --ink:#231e56; --muted:#7c7ba1;
+    --line:#e6e4f6; --accent:#6366f1; --accent2:#ec4899;
+    --good:#10b981; --mid:#f59e0b; --bad:#ef4444;
+    --lv:#6366f1;
+    --shadow:0 12px 32px rgba(79,70,229,.12);
+    --radius:22px;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#121524; --panel:#1c2136; --ink:#e8ebf7; --muted:#8f97b8;
-      --line:#2b3252; --accent:#7b93ff; --accent2:#a78bfa;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --bg1:#14122a; --bg2:#221537; --panel:#221f42; --ink:#edeafe; --muted:#9d99c8;
+      --line:#37325f; --accent:#818cf8; --accent2:#f472b6;
+      --shadow:0 12px 32px rgba(0,0,0,.4);
     }
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:var(--bg); color:var(--ink);
+    background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed; color:var(--ink);
     display:flex; justify-content:center;
   }
-  #app{width:100%; max-width:560px; padding:20px 16px 40px; min-height:100%}
+  #app{width:100%; max-width:560px; padding:20px 16px 40px; min-height:100%; position:relative; z-index:1}
 
-  .screen{display:none; animation:fade .25s ease}
+  /* ---------- playful background ---------- */
+  .blob{position:fixed; border-radius:50%; filter:blur(80px); opacity:.45; z-index:0; pointer-events:none}
+  .blob.b1{width:340px;height:340px; background:#a5b4fc; top:-90px; left:-100px; animation:drift 22s ease-in-out infinite alternate}
+  .blob.b2{width:300px;height:300px; background:#f9a8d4; bottom:-80px; right:-90px; animation:drift 26s ease-in-out infinite alternate-reverse}
+  .blob.b3{width:220px;height:220px; background:#6ee7b7; top:45%; left:-120px; animation:drift 30s ease-in-out infinite alternate}
+  @media (prefers-color-scheme: dark){ .blob{opacity:.22} }
+  @keyframes drift{from{transform:translate(0,0) scale(1)} to{transform:translate(50px,40px) scale(1.15)}}
+  .floaty{position:fixed; z-index:0; pointer-events:none; font-weight:800; opacity:.10;
+    font-size:34px; color:var(--accent); animation:bob 9s ease-in-out infinite}
+  .floaty:nth-child(odd){animation-duration:12s}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-8deg)} 50%{transform:translateY(-22px) rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){
+    .blob,.floaty,.mascot{animation:none !important}
+  }
+
+  .screen{display:none; animation:fade .3s ease}
   .screen.on{display:block}
-  @keyframes fade{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  @keyframes fade{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
 
   /* ---------- home ---------- */
-  header{text-align:center; margin:14px 0 22px}
-  header h1{font-size:26px; letter-spacing:1px}
+  header{text-align:center; margin:10px 0 20px}
+  .mascot{font-size:52px; display:inline-block; animation:hop 2.6s ease-in-out infinite}
+  @keyframes hop{0%,100%{transform:translateY(0)} 12%{transform:translateY(-10px) rotate(-6deg)} 24%{transform:translateY(0)}}
+  header h1{font-size:28px; letter-spacing:1px; margin-top:4px}
   header h1 .en{background:linear-gradient(90deg,var(--accent),var(--accent2));
     -webkit-background-clip:text; background-clip:text; color:transparent}
   header p{color:var(--muted); font-size:13px; margin-top:6px}
+  .chips{display:flex; gap:8px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+  .chip{
+    background:var(--panel); border:1px solid var(--line); border-radius:99px;
+    padding:7px 15px; font-size:13px; font-weight:700; box-shadow:var(--shadow);
+  }
+  .chip b{color:var(--accent)}
 
   .level{
+    --lv:#6366f1;
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     box-shadow:var(--shadow); padding:16px 18px; margin-bottom:14px; cursor:pointer;
-    transition:transform .12s ease;
+    transition:transform .15s ease, box-shadow .15s ease; position:relative; overflow:hidden;
   }
+  .level::before{content:""; position:absolute; top:0; left:0; bottom:0; width:6px;
+    background:linear-gradient(180deg,var(--lv),color-mix(in srgb,var(--lv) 45%,transparent))}
+  .level:hover{transform:translateY(-3px)}
   .level:active{transform:scale(.98)}
-  .level .row1{display:flex; align-items:center; gap:10px}
-  .level .emoji{font-size:26px}
-  .level .name{font-weight:700; font-size:17px}
-  .level .name small{color:var(--muted); font-weight:400; margin-left:6px}
-  .level .meta{margin-left:auto; font-size:12px; color:var(--muted); text-align:right}
-  .level .meta b{color:var(--accent); font-size:15px}
-  .bar{height:8px; background:var(--line); border-radius:99px; margin-top:12px; overflow:hidden}
-  .bar i{display:block; height:100%; border-radius:99px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width .4s ease}
-  .duehint{margin-top:8px; font-size:12px; color:var(--mid)}
-
-  .modes{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:20px}
-  .mode{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    padding:14px 6px; text-align:center; cursor:pointer; transition:transform .12s ease;
+  .level .row1{display:flex; align-items:center; gap:12px}
+  .level .emoji{
+    font-size:27px; width:54px; height:54px; flex:none; display:grid; place-items:center;
+    border-radius:18px; background:color-mix(in srgb, var(--lv) 14%, var(--panel));
   }
-  .mode:active{transform:scale(.95)}
-  .mode.sel{border-color:var(--accent); box-shadow:0 0 0 2px var(--accent) inset}
-  .mode .ic{font-size:22px}
-  .mode .t{font-size:13px; font-weight:600; margin-top:6px}
+  .level .name{font-weight:800; font-size:18px}
+  .level .name small{color:var(--muted); font-weight:400; margin-left:6px; font-size:12px}
+  .level .sub{color:var(--muted); font-size:12px; margin-top:3px}
+  .level .meta{margin-left:auto; font-size:12px; color:var(--muted); text-align:right; flex:none}
+  .level .meta b{color:var(--lv); font-size:17px}
+  .level .go{position:absolute; right:14px; bottom:14px; font-size:12px; font-weight:700; color:var(--lv); opacity:.85}
+  .bar{height:9px; background:var(--line); border-radius:99px; margin-top:12px; overflow:hidden}
+  .bar i{display:block; height:100%; border-radius:99px;
+    background:linear-gradient(90deg,var(--lv),color-mix(in srgb,var(--lv) 55%,#ffffff)); transition:width .5s ease}
+  .duehint{margin-top:8px; font-size:12px; color:var(--mid); font-weight:600}
+
+  .modes{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px}
+  .mode{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:14px 6px; text-align:center; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .mode:hover{transform:translateY(-2px)}
+  .mode:active{transform:scale(.94)}
+  .mode.sel{border-color:var(--accent); box-shadow:0 0 0 2px var(--accent) inset, var(--shadow)}
+  .mode .ic{
+    font-size:22px; width:44px; height:44px; margin:0 auto; display:grid; place-items:center;
+    border-radius:14px; background:linear-gradient(135deg,
+      color-mix(in srgb,var(--accent) 14%,var(--panel)),
+      color-mix(in srgb,var(--accent2) 14%,var(--panel)));
+  }
+  .mode .t{font-size:13px; font-weight:700; margin-top:8px}
   .mode .s{font-size:11px; color:var(--muted); margin-top:2px}
-  .modes-label{margin-top:26px; font-size:13px; color:var(--muted); font-weight:600}
+  .modes-label{margin-top:24px; margin-bottom:10px; font-size:13px; color:var(--muted); font-weight:700; letter-spacing:1px}
 
   /* ---------- shared top bar ---------- */
   .topbar{display:flex; align-items:center; gap:12px; margin-bottom:16px}
   .backbtn{
     border:1px solid var(--line); background:var(--panel); color:var(--ink);
-    width:38px; height:38px; border-radius:12px; font-size:17px; cursor:pointer; flex:none;
+    width:40px; height:40px; border-radius:13px; font-size:17px; cursor:pointer; flex:none;
+    box-shadow:var(--shadow);
   }
+  .backbtn:active{transform:scale(.92)}
   .progresswrap{flex:1}
   .progresswrap .bar{margin-top:0}
-  .counter{font-size:12px; color:var(--muted); flex:none; min-width:52px; text-align:right}
+  .counter{font-size:12px; color:var(--muted); flex:none; min-width:52px; text-align:right; font-weight:700}
 
   /* ---------- flashcard ---------- */
   .cardstage{perspective:1200px; margin-top:8px}
   .card{
-    position:relative; width:100%; height:320px; cursor:pointer;
+    position:relative; width:100%; height:330px; cursor:pointer;
     transform-style:preserve-3d; transition:transform .45s cubic-bezier(.2,.7,.3,1);
   }
   .card.flip{transform:rotateY(180deg)}
@@ -88,81 +131,108 @@
     position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     box-shadow:var(--shadow); display:flex; flex-direction:column;
-    align-items:center; justify-content:center; padding:24px; text-align:center;
+    align-items:center; justify-content:center; padding:26px 24px; text-align:center; overflow:hidden;
   }
+  .face::before{content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    background:linear-gradient(90deg,var(--lv),color-mix(in srgb,var(--lv) 45%,#ffffff))}
   .face.back{transform:rotateY(180deg)}
-  .word{font-size:42px; font-weight:800; letter-spacing:.5px; word-break:break-word}
+  .word{font-size:44px; font-weight:800; letter-spacing:.5px; word-break:break-word}
   .pos{margin-top:8px; color:var(--muted); font-style:italic; font-size:15px}
   .taphint{position:absolute; bottom:14px; font-size:12px; color:var(--muted)}
-  .zh{font-size:30px; font-weight:700}
+  .zh{font-size:30px; font-weight:800}
   .back .word-sm{font-size:18px; color:var(--muted); margin-bottom:10px}
   .ex{margin-top:16px; font-size:15px; line-height:1.6; color:var(--ink)}
   .ex .xz{display:block; color:var(--muted); font-size:13px; margin-top:4px}
   .speak{
-    margin-top:14px; border:1px solid var(--line); background:transparent; color:var(--accent);
-    border-radius:99px; padding:6px 16px; font-size:14px; cursor:pointer;
+    margin-top:14px; border:1.5px solid color-mix(in srgb,var(--lv) 45%,var(--line));
+    background:color-mix(in srgb,var(--lv) 8%,var(--panel)); color:var(--lv);
+    border-radius:99px; padding:7px 18px; font-size:14px; font-weight:700; cursor:pointer;
   }
+  .speak:active{transform:scale(.94)}
   .grade{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:18px}
   .grade button{
-    border:none; border-radius:14px; padding:14px 4px; font-size:15px; font-weight:700;
+    border:none; border-radius:16px; padding:14px 4px; font-size:15px; font-weight:800;
     cursor:pointer; color:#fff; transition:transform .1s ease; touch-action:manipulation;
+    box-shadow:0 6px 16px rgba(0,0,0,.14);
   }
-  .grade button:active{transform:scale(.95)}
-  .grade .again{background:var(--bad)} .grade .hard{background:var(--mid)} .grade .good{background:var(--good)}
-  .grade button small{display:block; font-weight:400; font-size:11px; opacity:.85; margin-top:2px}
-  .grade button:disabled{opacity:.4; cursor:default}
-  .newtag{position:absolute; top:14px; left:16px; font-size:11px; font-weight:700;
-    color:var(--accent); border:1px solid var(--accent); border-radius:99px; padding:2px 10px}
-  .boxtag{position:absolute; top:14px; right:16px; font-size:11px; color:var(--muted)}
+  .grade button:active{transform:scale(.93)}
+  .grade .again{background:linear-gradient(135deg,#f87171,var(--bad))}
+  .grade .hard{background:linear-gradient(135deg,#fbbf24,var(--mid))}
+  .grade .good{background:linear-gradient(135deg,#34d399,var(--good))}
+  .grade button small{display:block; font-weight:500; font-size:11px; opacity:.9; margin-top:2px}
+  .grade button:disabled{opacity:.4; cursor:default; box-shadow:none}
+  .newtag{position:absolute; top:16px; left:16px; font-size:11px; font-weight:800; color:#fff;
+    background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:99px; padding:3px 11px}
+  .boxtag{position:absolute; top:17px; right:16px; font-size:11px; color:var(--muted); font-weight:700}
 
   /* ---------- quiz ---------- */
   .qprompt{
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     box-shadow:var(--shadow); padding:30px 20px; text-align:center; margin-top:8px;
+    position:relative; overflow:hidden;
   }
-  .qprompt .dir{font-size:12px; color:var(--muted); margin-bottom:10px}
+  .qprompt::before{content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    background:linear-gradient(90deg,var(--lv),color-mix(in srgb,var(--lv) 45%,#ffffff))}
+  .qprompt .dir{font-size:12px; color:var(--muted); margin-bottom:10px; font-weight:700}
   .qprompt .big{font-size:32px; font-weight:800}
   .qprompt .pos{font-size:14px}
   .opts{display:grid; gap:10px; margin-top:16px}
   .opt{
-    background:var(--panel); border:1px solid var(--line); border-radius:14px;
-    padding:15px 16px; font-size:17px; text-align:left; cursor:pointer; color:var(--ink);
-    transition:transform .1s ease; touch-action:manipulation;
+    background:var(--panel); border:1.5px solid var(--line); border-radius:16px;
+    padding:15px 18px; font-size:17px; font-weight:600; text-align:left; cursor:pointer; color:var(--ink);
+    transition:transform .1s ease, border-color .15s ease; touch-action:manipulation;
+    box-shadow:var(--shadow);
   }
+  .opt:hover{border-color:color-mix(in srgb,var(--lv) 55%,var(--line))}
   .opt:active{transform:scale(.98)}
-  .opt.right{border-color:var(--good); background:color-mix(in srgb, var(--good) 14%, var(--panel)); font-weight:700}
+  .opt.right{border-color:var(--good); background:color-mix(in srgb, var(--good) 14%, var(--panel)); font-weight:800}
   .opt.wrong{border-color:var(--bad); background:color-mix(in srgb, var(--bad) 14%, var(--panel))}
   .opt:disabled{cursor:default}
 
   /* ---------- spelling ---------- */
   .spellbox{margin-top:16px; display:flex; flex-direction:column; gap:12px}
   .spellinput{
-    width:100%; font-size:24px; text-align:center; letter-spacing:2px; padding:14px;
-    border-radius:14px; border:2px solid var(--line); background:var(--panel); color:var(--ink);
-    outline:none; font-family:inherit;
+    width:100%; font-size:24px; text-align:center; letter-spacing:2px; padding:15px;
+    border-radius:16px; border:2px solid var(--line); background:var(--panel); color:var(--ink);
+    outline:none; font-family:inherit; box-shadow:var(--shadow);
   }
-  .spellinput:focus{border-color:var(--accent)}
+  .spellinput:focus{border-color:var(--lv)}
   .spellinput.ok{border-color:var(--good)} .spellinput.no{border-color:var(--bad)}
   .bigbtn{
-    border:none; border-radius:14px; padding:15px; font-size:16px; font-weight:700; cursor:pointer;
+    border:none; border-radius:16px; padding:15px; font-size:16px; font-weight:800; cursor:pointer;
     background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#fff;
-    touch-action:manipulation;
+    touch-action:manipulation; box-shadow:0 6px 16px rgba(99,102,241,.3);
   }
-  .bigbtn.ghost{background:transparent; border:1px solid var(--line); color:var(--ink)}
+  .bigbtn:active{transform:scale(.97)}
+  .bigbtn.ghost{background:var(--panel); border:1px solid var(--line); color:var(--ink); box-shadow:var(--shadow)}
   .spellanswer{text-align:center; font-size:15px; min-height:24px}
-  .spellanswer .no{color:var(--bad); font-weight:700}
-  .spellanswer .ok{color:var(--good); font-weight:700}
+  .spellanswer .no{color:var(--bad); font-weight:800}
+  .spellanswer .ok{color:var(--good); font-weight:800}
 
   /* ---------- result ---------- */
   .result{
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     box-shadow:var(--shadow); padding:36px 24px; text-align:center; margin-top:30px;
+    position:relative; overflow:hidden;
   }
-  .result .big-emoji{font-size:54px}
-  .result h2{margin:12px 0 4px; font-size:22px}
-  .result p{color:var(--muted); font-size:14px; line-height:1.7}
-  .result .score{font-size:40px; font-weight:800; color:var(--accent); margin:10px 0}
+  .result::before{content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .result .big-emoji{font-size:56px; display:inline-block; animation:pop .5s cubic-bezier(.3,1.6,.6,1)}
+  .stars{font-size:36px; letter-spacing:8px; margin-top:8px; min-height:44px}
+  .stars span{display:inline-block; animation:pop .45s cubic-bezier(.3,1.6,.6,1) backwards}
+  .stars span:nth-child(2){animation-delay:.15s}
+  .stars span:nth-child(3){animation-delay:.3s}
+  .stars span.dim{opacity:.22; filter:grayscale(1)}
+  @keyframes pop{from{transform:scale(0)} to{transform:scale(1)}}
+  .result h2{margin:8px 0 4px; font-size:23px}
+  .result p{color:var(--muted); font-size:14px; line-height:1.8}
+  .result .score{font-size:42px; font-weight:800; color:var(--accent); margin:8px 0}
   .result .btns{display:grid; gap:10px; margin-top:22px}
+
+  /* ---------- confetti ---------- */
+  #confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:50}
+  .cf{position:absolute; top:-16px; width:10px; height:15px; border-radius:3px; animation:cfall linear forwards}
+  @keyframes cfall{to{transform:translateY(112vh) rotate(760deg)}}
 
   footer{text-align:center; margin-top:34px; font-size:12px; color:var(--muted)}
   footer button{background:none; border:none; color:var(--muted); font-size:12px;
@@ -170,16 +240,29 @@
 </style>
 </head>
 <body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<span class="floaty" style="top:12%; right:6%">Aa</span>
+<span class="floaty" style="top:38%; right:-4px; animation-delay:-3s">✏️</span>
+<span class="floaty" style="bottom:22%; left:4%; animation-delay:-6s">Bb</span>
+<span class="floaty" style="top:64%; right:8%; animation-delay:-2s">⭐</span>
+<span class="floaty" style="bottom:6%; right:30%; animation-delay:-5s">Cc</span>
+<div id="confetti"></div>
+
 <div id="app">
 
   <!-- ================= HOME ================= -->
   <section id="home" class="screen on">
     <header>
-      <h1>📇 单词闪卡 <span class="en">Flashcards</span></h1>
-      <p>选择学段和练习方式，每天几分钟，词汇滚雪球</p>
+      <span class="mascot">🦉</span>
+      <h1>单词闪卡 <span class="en">Flashcards</span></h1>
+      <p>每天几分钟，词汇滚雪球 ⛄</p>
+      <div class="chips">
+        <span class="chip" id="streakChip">🔥 连续 <b>0</b> 天</span>
+        <span class="chip" id="masteredChip">🏅 已掌握 <b>0</b> 词</span>
+      </div>
     </header>
 
-    <div class="modes-label">练习方式 Mode</div>
+    <div class="modes-label">✦ 练习方式 MODE</div>
     <div class="modes" id="modes">
       <div class="mode sel" data-mode="study">
         <div class="ic">🃏</div><div class="t">闪卡学习</div><div class="s">翻卡记忆</div>
@@ -192,7 +275,7 @@
       </div>
     </div>
 
-    <div class="modes-label" style="margin-top:22px">学段 Level</div>
+    <div class="modes-label">✦ 学段 LEVEL</div>
     <div id="levels"></div>
 
     <footer>
@@ -211,7 +294,7 @@
     <div class="cardstage">
       <div class="card" id="card">
         <div class="face front">
-          <span class="newtag" id="newTag">新词</span>
+          <span class="newtag" id="newTag">✨ 新词</span>
           <span class="boxtag" id="boxTag"></span>
           <div class="word" id="fWord"></div>
           <div class="pos" id="fPos"></div>
@@ -227,9 +310,9 @@
       </div>
     </div>
     <div class="grade">
-      <button class="again" id="gAgain">不认识<small>稍后重来</small></button>
-      <button class="hard"  id="gHard">模糊<small>再巩固</small></button>
-      <button class="good"  id="gGood">认识<small>升一级</small></button>
+      <button class="again" id="gAgain">😵 不认识<small>稍后重来</small></button>
+      <button class="hard"  id="gHard">🤔 模糊<small>再巩固</small></button>
+      <button class="good"  id="gGood">😎 认识<small>升一级</small></button>
     </div>
   </section>
 
@@ -273,6 +356,7 @@
   <section id="result" class="screen">
     <div class="result">
       <div class="big-emoji" id="rEmoji">🎉</div>
+      <div class="stars" id="rStars"></div>
       <h2 id="rTitle">完成！</h2>
       <div class="score" id="rScore"></div>
       <p id="rDetail"></p>
@@ -292,6 +376,7 @@
    扩充词库：直接编辑对应 JSON；新增学段：加一个 JSON + levels.json 一条记录。
    ===================================================================== */
 const DECKS = {}, LEVEL_INFO = {}, LEVELS = [];
+const DEFAULT_LV_COLORS = ["#22c55e", "#3b82f6", "#a855f7", "#f59e0b", "#ec4899"];
 
 async function loadDecks(){
   const res = await fetch("data/levels.json");
@@ -303,6 +388,7 @@ async function loadDecks(){
     return r.json();
   }));
   manifest.forEach((m, i) => {
+    if(!m.color) m.color = DEFAULT_LV_COLORS[i % DEFAULT_LV_COLORS.length];
     LEVELS.push(m.id);
     LEVEL_INFO[m.id] = m;
     DECKS[m.id] = decks[i];
@@ -342,6 +428,27 @@ function levelStats(level){
 }
 
 /* =====================================================================
+   连续学习天数（打卡）：完成任意一组练习记为当天已学
+   ===================================================================== */
+const STREAK_KEY = "english-flashcards-streak";
+function dateStr(d){
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function getStreak(){
+  try{ return JSON.parse(localStorage.getItem(STREAK_KEY)) || {last:"", n:0}; }
+  catch(e){ return {last:"", n:0}; }
+}
+function bumpStreak(){
+  const s = getStreak(), today = dateStr(new Date());
+  if(s.last === today) return s;
+  const yesterday = dateStr(new Date(Date.now() - 86400000));
+  s.n = (s.last === yesterday) ? s.n + 1 : 1;
+  s.last = today;
+  localStorage.setItem(STREAK_KEY, JSON.stringify(s));
+  return s;
+}
+
+/* =====================================================================
    通用工具
    ===================================================================== */
 function shuffle(a){
@@ -370,12 +477,37 @@ function show(id){
   $(id).classList.add("on");
 }
 
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box = $("confetti");
+  const colors = ["#6366f1","#ec4899","#f59e0b","#10b981","#3b82f6","#a855f7"];
+  for(let i = 0; i < 70; i++){
+    const c = document.createElement("i");
+    c.className = "cf";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = colors[i % colors.length];
+    c.style.transform = `rotate(${Math.random()*360}deg)`;
+    c.style.animationDuration = (2 + Math.random() * 1.8) + "s";
+    c.style.animationDelay = Math.random() * .6 + "s";
+    box.appendChild(c);
+  }
+  setTimeout(() => { box.innerHTML = ""; }, 4600);
+}
+
 /* =====================================================================
    首页
    ===================================================================== */
 let curMode = "study", curLevel = null;
 
 function renderHome(){
+  const s = getStreak(), today = dateStr(new Date());
+  $("streakChip").innerHTML = s.last === today
+    ? `🔥 连续 <b>${s.n}</b> 天 · 今天已打卡 ✓`
+    : `🔥 连续 <b>${s.n}</b> 天`;
+  let totalMastered = 0;
+  for(const key of LEVELS) totalMastered += levelStats(key).mastered;
+  $("masteredChip").innerHTML = `🏅 已掌握 <b>${totalMastered}</b> 词`;
+
   const wrap = $("levels");
   wrap.innerHTML = "";
   for(const key of LEVELS){
@@ -383,16 +515,19 @@ function renderHome(){
     const pct = Math.round(st.mastered / st.total * 100);
     const div = document.createElement("div");
     div.className = "level";
+    div.style.setProperty("--lv", info.color);
     div.innerHTML = `
       <div class="row1">
         <span class="emoji">${info.emoji}</span>
         <div>
-          <div class="name">${info.name}<small>${info.en} · ${info.desc}</small></div>
+          <div class="name">${info.name}<small>${info.en}</small></div>
+          <div class="sub">${info.desc} · 共 ${st.total} 词</div>
         </div>
         <div class="meta"><b>${st.mastered}</b>/${st.total}<br>已掌握</div>
       </div>
       <div class="bar"><i style="width:${pct}%"></i></div>
-      ${st.due > 0 ? `<div class="duehint">⏰ 有 ${st.due} 个单词到期需要复习</div>` : ""}`;
+      ${st.due > 0 ? `<div class="duehint">⏰ 有 ${st.due} 个单词到期需要复习</div>` : ""}
+      <div class="go">开始 →</div>`;
     div.onclick = () => startMode(curMode, key);
     wrap.appendChild(div);
   }
@@ -410,6 +545,7 @@ $("resetBtn").onclick = () => {
   if(confirm("确定要清空全部学习进度吗？此操作不可恢复。")){
     progress = {};
     saveProgress();
+    localStorage.removeItem(STREAK_KEY);
     renderHome();
   }
 };
@@ -420,6 +556,7 @@ document.querySelectorAll("[data-back]").forEach(b => {
 
 function startMode(mode, level){
   curLevel = level;
+  document.body.style.setProperty("--lv", LEVEL_INFO[level].color);
   if(mode === "study") startStudy(level);
   else if(mode === "quiz") startQuiz(level);
   else startSpell(level);
@@ -516,12 +653,16 @@ $("gGood").onclick  = () => grade("good");
 
 function finishStudy(){
   const st = levelStats(curLevel);
+  const streak = bumpStreak();
+  const stars = sAgainCount === 0 ? 3 : sAgainCount <= 2 ? 2 : 1;
   showResult({
     emoji: sAgainCount === 0 ? "🎉" : "💪",
     title: "本组学习完成！",
     score: `${sDone} 张卡`,
     detail: `新学 ${sNewCount} 个 · 重来 ${sAgainCount} 次<br>` +
-            `${LEVEL_INFO[curLevel].name}词库已掌握 ${st.mastered}/${st.total}，已学 ${st.learned} 个`,
+            `${LEVEL_INFO[curLevel].name}词库已掌握 ${st.mastered}/${st.total}，已学 ${st.learned} 个<br>` +
+            `🔥 已连续学习 ${streak.n} 天`,
+    stars,
     again: () => startStudy(curLevel)
   });
 }
@@ -580,11 +721,13 @@ function answerQuiz(btn, correct, it, dir){
 
 function finishQuiz(){
   const pct = Math.round(qScore / qList.length * 100);
+  const streak = bumpStreak();
   showResult({
     emoji: pct >= 90 ? "🏆" : pct >= 60 ? "😊" : "📖",
     title: pct >= 90 ? "太棒了！" : pct >= 60 ? "不错，继续加油！" : "再学一遍会更好",
     score: `${qScore} / ${qList.length}`,
-    detail: `正确率 ${pct}% · ${LEVEL_INFO[curLevel].name}词库`,
+    detail: `正确率 ${pct}% · ${LEVEL_INFO[curLevel].name}词库<br>🔥 已连续学习 ${streak.n} 天`,
+    stars: pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 40 ? 1 : 0,
     again: () => startQuiz(curLevel)
   });
 }
@@ -651,11 +794,13 @@ $("sHint").onclick = () => {
 
 function finishSpell(){
   const pct = Math.round(spScore / spList.length * 100);
+  const streak = bumpStreak();
   showResult({
     emoji: pct >= 90 ? "🏆" : pct >= 60 ? "✍️" : "📖",
     title: pct >= 90 ? "拼写大师！" : "拼写练习完成",
     score: `${spScore} / ${spList.length}`,
-    detail: `正确率 ${pct}% · ${LEVEL_INFO[curLevel].name}词库`,
+    detail: `正确率 ${pct}% · ${LEVEL_INFO[curLevel].name}词库<br>🔥 已连续学习 ${streak.n} 天`,
+    stars: pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 40 ? 1 : 0,
     again: () => startSpell(curLevel)
   });
 }
@@ -664,13 +809,16 @@ function finishSpell(){
    结算页
    ===================================================================== */
 let rAgainFn = null;
-function showResult({emoji, title, score, detail, again}){
+function showResult({emoji, title, score, detail, stars = 0, again}){
   $("rEmoji").textContent = emoji;
+  $("rStars").innerHTML = [1,2,3].map(i =>
+    `<span class="${i <= stars ? "" : "dim"}">⭐</span>`).join("");
   $("rTitle").textContent = title;
   $("rScore").textContent = score;
   $("rDetail").innerHTML = detail;
   rAgainFn = again;
   show("result");
+  if(stars >= 2) confetti();
 }
 $("rAgain").onclick = () => { if(rAgainFn) rAgainFn(); };
 

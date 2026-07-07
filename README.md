@@ -27,6 +27,12 @@ A server is needed because the word lists load from `data/*.json` via `fetch()`,
 
 Pronunciation uses the browser's built-in Web Speech API (🔊 buttons; auto-plays on new cards and EN→中 quiz questions).
 
+## Motivation features
+
+- **🔥 Daily streak** — finishing any session counts as that day's check-in; consecutive days show as a chip on the home screen and on the result page.
+- **⭐ Star ratings + 🎊 confetti** — every session ends with 0–3 stars (by accuracy, or by how many "不认识" repeats in study mode); 2+ stars throws confetti.
+- **Per-level theme colors** — each level has its own color (from `data/levels.json`) used across its card, progress bar, and practice screens. Animations respect `prefers-reduced-motion`.
+
 ## Progress
 
 All progress lives in `localStorage` under the key `english-flashcards-v1` (per level, per word: box number + next-due timestamp). The home screen shows mastered counts, progress bars, and how many words are due for review. "清空全部进度" in the footer resets everything.
@@ -35,7 +41,7 @@ All progress lives in `localStorage` under the key `english-flashcards-v1` (per 
 
 All word data lives in `data/`, one JSON file per level plus a manifest:
 
-- `data/levels.json` — the list of levels, in home-screen order. Each entry: `{"id", "emoji", "name", "en", "desc", "file"}`.
+- `data/levels.json` — the list of levels, in home-screen order. Each entry: `{"id", "emoji", "name", "en", "desc", "file", "color"}` (`color` = optional hex theme color for the level).
 - `data/primary.json` / `secondary.json` / `tertiary.json` — arrays of word entries:
 
 ```json

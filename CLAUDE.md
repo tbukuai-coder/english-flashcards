@@ -13,8 +13,10 @@ Because data loads via `fetch()`, the app only works over HTTP — never test by
 `data/levels.json` is the manifest — an ordered array (order = home-screen order):
 
 ```json
-{"id": "primary", "emoji": "🌱", "name": "小学", "en": "Primary", "desc": "基础生活词汇", "file": "primary.json"}
+{"id": "primary", "emoji": "🌱", "name": "小学", "en": "Primary", "desc": "基础生活词汇", "file": "primary.json", "color": "#22c55e"}
 ```
+
+`color` is the level's theme color (hex), used for its home card, progress bar, and the accent tint on study/quiz/spell screens. It's optional — levels without one get assigned from a default palette by position.
 
 Each `file` points to a word list in `data/`: a JSON array of entries with **all five fields required**:
 

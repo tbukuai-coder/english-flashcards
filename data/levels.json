@@ -5,7 +5,8 @@
     "name": "小学",
     "en": "Primary",
     "desc": "基础生活词汇",
-    "file": "primary.json"
+    "file": "primary.json",
+    "color": "#22c55e"
   },
   {
     "id": "secondary",
@@ -13,7 +14,8 @@
     "name": "中学",
     "en": "Secondary",
     "desc": "中考/高考常见词",
-    "file": "secondary.json"
+    "file": "secondary.json",
+    "color": "#3b82f6"
   },
   {
     "id": "tertiary",
@@ -21,6 +23,7 @@
     "name": "大学",
     "en": "Tertiary",
     "desc": "四六级/学术词汇",
-    "file": "tertiary.json"
+    "file": "tertiary.json",
+    "color": "#a855f7"
   }
 ]

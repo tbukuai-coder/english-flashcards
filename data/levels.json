@@ -1,0 +1,26 @@
+[
+  {
+    "id": "primary",
+    "emoji": "🌱",
+    "name": "小学",
+    "en": "Primary",
+    "desc": "基础生活词汇",
+    "file": "primary.json"
+  },
+  {
+    "id": "secondary",
+    "emoji": "🌿",
+    "name": "中学",
+    "en": "Secondary",
+    "desc": "中考/高考常见词",
+    "file": "secondary.json"
+  },
+  {
+    "id": "tertiary",
+    "emoji": "🌳",
+    "name": "大学",
+    "en": "Tertiary",
+    "desc": "四六级/学术词汇",
+    "file": "tertiary.json"
+  }
+]

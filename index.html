@@ -287,210 +287,27 @@
 
 <script>
 /* =====================================================================
-   词库：w=单词 p=词性 zh=中文 ex=英文例句 xz=例句翻译
+   词库存放在 data/ 目录：levels.json 是学段清单（顺序即首页顺序），
+   每个学段一个 JSON 文件（w=单词 p=词性 zh=中文 ex=英文例句 xz=例句翻译）。
+   扩充词库：直接编辑对应 JSON；新增学段：加一个 JSON + levels.json 一条记录。
    ===================================================================== */
-const DECKS = {
-  primary: [
-    {w:"apple",p:"n.",zh:"苹果",ex:"I eat an apple every day.",xz:"我每天吃一个苹果。"},
-    {w:"book",p:"n.",zh:"书",ex:"This book is very interesting.",xz:"这本书很有趣。"},
-    {w:"cat",p:"n.",zh:"猫",ex:"The cat is sleeping on the sofa.",xz:"猫正在沙发上睡觉。"},
-    {w:"dog",p:"n.",zh:"狗",ex:"My dog likes to play ball.",xz:"我的狗喜欢玩球。"},
-    {w:"sun",p:"n.",zh:"太阳",ex:"The sun is very bright today.",xz:"今天太阳很亮。"},
-    {w:"moon",p:"n.",zh:"月亮",ex:"The moon is round tonight.",xz:"今晚的月亮很圆。"},
-    {w:"star",p:"n.",zh:"星星",ex:"I can see many stars in the sky.",xz:"我能看到天上有很多星星。"},
-    {w:"water",p:"n.",zh:"水",ex:"Please drink more water.",xz:"请多喝水。"},
-    {w:"milk",p:"n.",zh:"牛奶",ex:"I drink milk every morning.",xz:"我每天早上喝牛奶。"},
-    {w:"egg",p:"n.",zh:"鸡蛋",ex:"Mom cooked an egg for me.",xz:"妈妈给我煮了一个鸡蛋。"},
-    {w:"bread",p:"n.",zh:"面包",ex:"I had bread for breakfast.",xz:"我早餐吃了面包。"},
-    {w:"rice",p:"n.",zh:"米饭",ex:"We eat rice for dinner.",xz:"我们晚餐吃米饭。"},
-    {w:"cake",p:"n.",zh:"蛋糕",ex:"The birthday cake is sweet.",xz:"生日蛋糕很甜。"},
-    {w:"fish",p:"n.",zh:"鱼",ex:"There are three fish in the tank.",xz:"鱼缸里有三条鱼。"},
-    {w:"bird",p:"n.",zh:"鸟",ex:"A bird is singing in the tree.",xz:"一只鸟在树上唱歌。"},
-    {w:"tree",p:"n.",zh:"树",ex:"There is a big tree in the park.",xz:"公园里有一棵大树。"},
-    {w:"flower",p:"n.",zh:"花",ex:"The flower smells nice.",xz:"这朵花闻起来很香。"},
-    {w:"red",p:"adj.",zh:"红色的",ex:"She has a red hat.",xz:"她有一顶红色的帽子。"},
-    {w:"blue",p:"adj.",zh:"蓝色的",ex:"The sky is blue.",xz:"天空是蓝色的。"},
-    {w:"green",p:"adj.",zh:"绿色的",ex:"The grass is green.",xz:"草是绿色的。"},
-    {w:"yellow",p:"adj.",zh:"黄色的",ex:"Bananas are yellow.",xz:"香蕉是黄色的。"},
-    {w:"big",p:"adj.",zh:"大的",ex:"An elephant is very big.",xz:"大象非常大。"},
-    {w:"small",p:"adj.",zh:"小的",ex:"A mouse is small.",xz:"老鼠很小。"},
-    {w:"hot",p:"adj.",zh:"热的",ex:"The soup is too hot.",xz:"汤太烫了。"},
-    {w:"cold",p:"adj.",zh:"冷的",ex:"It is cold in winter.",xz:"冬天很冷。"},
-    {w:"happy",p:"adj.",zh:"高兴的",ex:"I am happy to see you.",xz:"见到你我很高兴。"},
-    {w:"sad",p:"adj.",zh:"难过的",ex:"She is sad because she lost her pen.",xz:"她因为丢了钢笔而难过。"},
-    {w:"new",p:"adj.",zh:"新的",ex:"I have a new schoolbag.",xz:"我有一个新书包。"},
-    {w:"old",p:"adj.",zh:"旧的；年老的",ex:"My grandpa is old but strong.",xz:"我爷爷年纪大但很健壮。"},
-    {w:"fast",p:"adj.",zh:"快的",ex:"The train is very fast.",xz:"火车非常快。"},
-    {w:"slow",p:"adj.",zh:"慢的",ex:"The turtle is slow.",xz:"乌龟很慢。"},
-    {w:"run",p:"v.",zh:"跑",ex:"I run to school every day.",xz:"我每天跑步去上学。"},
-    {w:"jump",p:"v.",zh:"跳",ex:"The rabbit can jump high.",xz:"兔子能跳得很高。"},
-    {w:"walk",p:"v.",zh:"走路",ex:"We walk to the park together.",xz:"我们一起走路去公园。"},
-    {w:"swim",p:"v.",zh:"游泳",ex:"I can swim in the pool.",xz:"我会在泳池里游泳。"},
-    {w:"fly",p:"v.",zh:"飞",ex:"Birds can fly in the sky.",xz:"鸟儿会在天上飞。"},
-    {w:"sing",p:"v.",zh:"唱歌",ex:"She likes to sing songs.",xz:"她喜欢唱歌。"},
-    {w:"dance",p:"v.",zh:"跳舞",ex:"They dance at the party.",xz:"他们在聚会上跳舞。"},
-    {w:"read",p:"v.",zh:"读；阅读",ex:"I read a story before bed.",xz:"我睡前读一个故事。"},
-    {w:"write",p:"v.",zh:"写",ex:"Please write your name here.",xz:"请在这里写下你的名字。"},
-    {w:"eat",p:"v.",zh:"吃",ex:"We eat lunch at noon.",xz:"我们中午吃午饭。"},
-    {w:"drink",p:"v.",zh:"喝",ex:"He drinks juice after dinner.",xz:"他晚饭后喝果汁。"},
-    {w:"sleep",p:"v.",zh:"睡觉",ex:"I sleep at nine o'clock.",xz:"我九点睡觉。"},
-    {w:"play",p:"v.",zh:"玩；打（球）",ex:"Let's play football after school.",xz:"放学后我们去踢足球吧。"},
-    {w:"school",p:"n.",zh:"学校",ex:"Our school is big and beautiful.",xz:"我们的学校又大又漂亮。"},
-    {w:"teacher",p:"n.",zh:"老师",ex:"My teacher is very kind.",xz:"我的老师非常和蔼。"},
-    {w:"student",p:"n.",zh:"学生",ex:"There are forty students in my class.",xz:"我们班有四十名学生。"},
-    {w:"friend",p:"n.",zh:"朋友",ex:"Tom is my best friend.",xz:"汤姆是我最好的朋友。"},
-    {w:"family",p:"n.",zh:"家庭",ex:"I love my family.",xz:"我爱我的家庭。"},
-    {w:"mother",p:"n.",zh:"妈妈",ex:"My mother cooks well.",xz:"我妈妈做饭很好吃。"},
-    {w:"father",p:"n.",zh:"爸爸",ex:"My father works in a hospital.",xz:"我爸爸在医院工作。"},
-    {w:"house",p:"n.",zh:"房子",ex:"They live in a white house.",xz:"他们住在一栋白色的房子里。"},
-    {w:"door",p:"n.",zh:"门",ex:"Please close the door.",xz:"请关上门。"},
-    {w:"window",p:"n.",zh:"窗户",ex:"Open the window, please.",xz:"请打开窗户。"},
-    {w:"chair",p:"n.",zh:"椅子",ex:"Sit on the chair, please.",xz:"请坐在椅子上。"},
-    {w:"table",p:"n.",zh:"桌子",ex:"The cup is on the table.",xz:"杯子在桌子上。"},
-    {w:"pen",p:"n.",zh:"钢笔",ex:"May I use your pen?",xz:"我可以用你的钢笔吗？"},
-    {w:"bag",p:"n.",zh:"书包；袋子",ex:"My bag is heavy today.",xz:"我今天的书包很重。"},
-    {w:"hat",p:"n.",zh:"帽子",ex:"He wears a hat in summer.",xz:"他夏天戴帽子。"},
-    {w:"shoe",p:"n.",zh:"鞋子",ex:"These shoes are too small.",xz:"这双鞋太小了。"}
-  ],
-  secondary: [
-    {w:"achieve",p:"v.",zh:"实现；达到",ex:"She worked hard to achieve her goal.",xz:"她努力工作以实现目标。"},
-    {w:"advantage",p:"n.",zh:"优势；好处",ex:"Speaking two languages is a big advantage.",xz:"会说两种语言是很大的优势。"},
-    {w:"advice",p:"n.",zh:"建议",ex:"My teacher gave me useful advice.",xz:"老师给了我有用的建议。"},
-    {w:"afraid",p:"adj.",zh:"害怕的",ex:"Don't be afraid of making mistakes.",xz:"不要害怕犯错。"},
-    {w:"agree",p:"v.",zh:"同意",ex:"I agree with your plan.",xz:"我同意你的计划。"},
-    {w:"ancient",p:"adj.",zh:"古代的；古老的",ex:"We visited an ancient temple.",xz:"我们参观了一座古老的寺庙。"},
-    {w:"avoid",p:"v.",zh:"避免",ex:"You should avoid eating too much sugar.",xz:"你应该避免吃太多糖。"},
-    {w:"balance",p:"n./v.",zh:"平衡",ex:"Keep a balance between study and rest.",xz:"在学习和休息之间保持平衡。"},
-    {w:"believe",p:"v.",zh:"相信",ex:"I believe you can do it.",xz:"我相信你能做到。"},
-    {w:"borrow",p:"v.",zh:"借（入）",ex:"Can I borrow your dictionary?",xz:"我能借你的词典吗？"},
-    {w:"brave",p:"adj.",zh:"勇敢的",ex:"The brave boy saved the little girl.",xz:"勇敢的男孩救了小女孩。"},
-    {w:"celebrate",p:"v.",zh:"庆祝",ex:"We celebrate the Spring Festival with family.",xz:"我们和家人一起庆祝春节。"},
-    {w:"challenge",p:"n./v.",zh:"挑战",ex:"Learning English is a challenge for me.",xz:"学英语对我来说是个挑战。"},
-    {w:"choose",p:"v.",zh:"选择",ex:"You can choose any book you like.",xz:"你可以选任何你喜欢的书。"},
-    {w:"communicate",p:"v.",zh:"交流；沟通",ex:"We communicate with each other in English.",xz:"我们用英语互相交流。"},
-    {w:"compare",p:"v.",zh:"比较",ex:"Don't compare yourself with others too much.",xz:"不要过多地拿自己和别人比较。"},
-    {w:"confident",p:"adj.",zh:"自信的",ex:"Be confident when you speak in class.",xz:"课堂发言时要自信。"},
-    {w:"consider",p:"v.",zh:"考虑",ex:"Please consider my suggestion carefully.",xz:"请认真考虑我的建议。"},
-    {w:"courage",p:"n.",zh:"勇气",ex:"It takes courage to admit mistakes.",xz:"承认错误需要勇气。"},
-    {w:"create",p:"v.",zh:"创造",ex:"Artists create beautiful works.",xz:"艺术家创造美丽的作品。"},
-    {w:"culture",p:"n.",zh:"文化",ex:"China has a long history and rich culture.",xz:"中国历史悠久，文化丰富。"},
-    {w:"curious",p:"adj.",zh:"好奇的",ex:"Children are curious about everything.",xz:"孩子们对一切都很好奇。"},
-    {w:"decision",p:"n.",zh:"决定",ex:"It was a difficult decision to make.",xz:"这是一个很难做的决定。"},
-    {w:"describe",p:"v.",zh:"描述",ex:"Can you describe the picture in English?",xz:"你能用英语描述这幅图吗？"},
-    {w:"develop",p:"v.",zh:"发展；培养",ex:"Reading helps develop your mind.",xz:"阅读有助于培养思维。"},
-    {w:"discover",p:"v.",zh:"发现",ex:"Scientists discovered a new planet.",xz:"科学家发现了一颗新行星。"},
-    {w:"education",p:"n.",zh:"教育",ex:"Everyone has the right to education.",xz:"每个人都有受教育的权利。"},
-    {w:"effort",p:"n.",zh:"努力",ex:"Success needs time and effort.",xz:"成功需要时间和努力。"},
-    {w:"encourage",p:"v.",zh:"鼓励",ex:"My parents encourage me to try new things.",xz:"父母鼓励我尝试新事物。"},
-    {w:"energy",p:"n.",zh:"能量；精力",ex:"Young people are full of energy.",xz:"年轻人充满活力。"},
-    {w:"environment",p:"n.",zh:"环境",ex:"We should protect the environment.",xz:"我们应该保护环境。"},
-    {w:"especially",p:"adv.",zh:"尤其；特别",ex:"I like fruit, especially watermelon.",xz:"我喜欢水果，尤其是西瓜。"},
-    {w:"exercise",p:"n./v.",zh:"锻炼；练习",ex:"Doing exercise keeps you healthy.",xz:"锻炼使你保持健康。"},
-    {w:"experience",p:"n.",zh:"经验；经历",ex:"The trip was a wonderful experience.",xz:"这次旅行是一次美妙的经历。"},
-    {w:"explain",p:"v.",zh:"解释",ex:"The teacher explained the rule again.",xz:"老师又解释了一遍规则。"},
-    {w:"familiar",p:"adj.",zh:"熟悉的",ex:"His voice sounds familiar to me.",xz:"他的声音我听起来很熟悉。"},
-    {w:"generous",p:"adj.",zh:"慷慨的",ex:"She is generous and often helps others.",xz:"她很慷慨，经常帮助别人。"},
-    {w:"habit",p:"n.",zh:"习惯",ex:"Reading before bed is a good habit.",xz:"睡前阅读是个好习惯。"},
-    {w:"imagine",p:"v.",zh:"想象",ex:"Imagine you could fly like a bird.",xz:"想象你能像鸟一样飞。"},
-    {w:"improve",p:"v.",zh:"改进；提高",ex:"Practice can improve your spoken English.",xz:"练习能提高你的英语口语。"},
-    {w:"include",p:"v.",zh:"包括",ex:"The price includes breakfast.",xz:"价格包含早餐。"},
-    {w:"increase",p:"v./n.",zh:"增加",ex:"The number of students is increasing.",xz:"学生人数在增加。"},
-    {w:"journey",p:"n.",zh:"旅行；旅程",ex:"The journey to Tibet took three days.",xz:"去西藏的旅程花了三天。"},
-    {w:"knowledge",p:"n.",zh:"知识",ex:"Knowledge is power.",xz:"知识就是力量。"},
-    {w:"language",p:"n.",zh:"语言",ex:"English is a world language.",xz:"英语是一门世界语言。"},
-    {w:"measure",p:"v./n.",zh:"测量；措施",ex:"Let's measure the length of the desk.",xz:"我们来量一下课桌的长度。"},
-    {w:"necessary",p:"adj.",zh:"必要的",ex:"It is necessary to sleep enough.",xz:"睡眠充足是必要的。"},
-    {w:"nervous",p:"adj.",zh:"紧张的",ex:"I felt nervous before the exam.",xz:"考试前我感到紧张。"},
-    {w:"opportunity",p:"n.",zh:"机会",ex:"Don't miss this good opportunity.",xz:"不要错过这个好机会。"},
-    {w:"patient",p:"adj./n.",zh:"耐心的；病人",ex:"Be patient with young children.",xz:"对小孩子要有耐心。"},
-    {w:"popular",p:"adj.",zh:"受欢迎的",ex:"Basketball is popular among boys.",xz:"篮球在男生中很受欢迎。"},
-    {w:"prefer",p:"v.",zh:"更喜欢",ex:"I prefer tea to coffee.",xz:"比起咖啡我更喜欢茶。"},
-    {w:"prepare",p:"v.",zh:"准备",ex:"We are preparing for the English test.",xz:"我们正在为英语考试做准备。"},
-    {w:"protect",p:"v.",zh:"保护",ex:"Wear a helmet to protect your head.",xz:"戴头盔保护你的头部。"},
-    {w:"proud",p:"adj.",zh:"自豪的",ex:"I am proud of my country.",xz:"我为我的祖国感到自豪。"},
-    {w:"realize",p:"v.",zh:"意识到；实现",ex:"I realized I had made a mistake.",xz:"我意识到自己犯了个错误。"},
-    {w:"recognize",p:"v.",zh:"认出；识别",ex:"I didn't recognize him with the new haircut.",xz:"他换了新发型，我没认出来。"},
-    {w:"refuse",p:"v.",zh:"拒绝",ex:"He refused to give up.",xz:"他拒绝放弃。"},
-    {w:"society",p:"n.",zh:"社会",ex:"We should care about society.",xz:"我们应该关心社会。"},
-    {w:"succeed",p:"v.",zh:"成功",ex:"If you keep trying, you will succeed.",xz:"如果你坚持尝试，就会成功。"},
-    {w:"suggest",p:"v.",zh:"建议",ex:"I suggest going by train.",xz:"我建议坐火车去。"},
-    {w:"tradition",p:"n.",zh:"传统",ex:"Eating mooncakes is a Chinese tradition.",xz:"吃月饼是中国的传统。"},
-    {w:"unique",p:"adj.",zh:"独特的",ex:"Everyone is unique in this world.",xz:"世界上每个人都是独一无二的。"},
-    {w:"valuable",p:"adj.",zh:"宝贵的；有价值的",ex:"Time is the most valuable thing.",xz:"时间是最宝贵的东西。"}
-  ],
-  tertiary: [
-    {w:"abstract",p:"adj.",zh:"抽象的",ex:"Freedom is an abstract concept.",xz:"自由是一个抽象的概念。"},
-    {w:"accumulate",p:"v.",zh:"积累",ex:"He accumulated rich experience through practice.",xz:"他通过实践积累了丰富经验。"},
-    {w:"adequate",p:"adj.",zh:"充足的；足够的",ex:"Make sure you get adequate sleep before the exam.",xz:"考试前要保证充足的睡眠。"},
-    {w:"ambiguous",p:"adj.",zh:"模棱两可的；含糊的",ex:"His answer was deliberately ambiguous.",xz:"他的回答故意含糊其辞。"},
-    {w:"analyze",p:"v.",zh:"分析",ex:"We need to analyze the data first.",xz:"我们需要先分析数据。"},
-    {w:"anticipate",p:"v.",zh:"预期；预料",ex:"We anticipate strong demand for the product.",xz:"我们预计该产品需求旺盛。"},
-    {w:"assess",p:"v.",zh:"评估",ex:"Teachers assess students' progress each term.",xz:"老师每学期评估学生的进步。"},
-    {w:"assume",p:"v.",zh:"假定；承担",ex:"Let's assume the plan works.",xz:"我们假设这个计划可行。"},
-    {w:"attribute",p:"v./n.",zh:"把…归因于；属性",ex:"She attributes her success to hard work.",xz:"她把成功归因于努力。"},
-    {w:"coherent",p:"adj.",zh:"连贯的；条理清晰的",ex:"Your essay needs a more coherent structure.",xz:"你的文章需要更连贯的结构。"},
-    {w:"comprehensive",p:"adj.",zh:"全面的",ex:"The report gives a comprehensive review of the market.",xz:"这份报告对市场做了全面回顾。"},
-    {w:"consecutive",p:"adj.",zh:"连续的",ex:"It rained for five consecutive days.",xz:"连续下了五天雨。"},
-    {w:"constrain",p:"v.",zh:"限制；约束",ex:"The project is constrained by its budget.",xz:"这个项目受预算限制。"},
-    {w:"contradict",p:"v.",zh:"反驳；与…矛盾",ex:"The results contradict the earlier theory.",xz:"这些结果与先前的理论相矛盾。"},
-    {w:"controversial",p:"adj.",zh:"有争议的",ex:"The new policy is highly controversial.",xz:"这项新政策争议很大。"},
-    {w:"criterion",p:"n.",zh:"标准；准则",ex:"Price is not the only criterion for choice.",xz:"价格不是选择的唯一标准。"},
-    {w:"derive",p:"v.",zh:"源于；获得",ex:"Many English words derive from Latin.",xz:"许多英语单词源自拉丁语。"},
-    {w:"dilemma",p:"n.",zh:"困境；两难",ex:"She faced a dilemma between career and family.",xz:"她面临事业与家庭的两难。"},
-    {w:"diminish",p:"v.",zh:"减少；减弱",ex:"His influence has diminished over time.",xz:"他的影响力随时间减弱了。"},
-    {w:"distribute",p:"v.",zh:"分发；分配",ex:"The volunteers distributed food to the victims.",xz:"志愿者向灾民分发食物。"},
-    {w:"elaborate",p:"adj./v.",zh:"详尽的；详细阐述",ex:"Could you elaborate on your proposal?",xz:"你能详细说明你的提议吗？"},
-    {w:"eliminate",p:"v.",zh:"消除；淘汰",ex:"The team was eliminated in the first round.",xz:"该队在第一轮就被淘汰了。"},
-    {w:"empirical",p:"adj.",zh:"经验的；实证的",ex:"The theory lacks empirical evidence.",xz:"这个理论缺乏实证依据。"},
-    {w:"enhance",p:"v.",zh:"增强；提高",ex:"Good lighting enhances the photo quality.",xz:"良好的光线能提升照片质量。"},
-    {w:"evaluate",p:"v.",zh:"评价；评估",ex:"We must evaluate the risks before investing.",xz:"投资前我们必须评估风险。"},
-    {w:"evident",p:"adj.",zh:"明显的",ex:"It is evident that he is lying.",xz:"很明显他在撒谎。"},
-    {w:"explicit",p:"adj.",zh:"明确的；清楚的",ex:"The teacher gave explicit instructions.",xz:"老师给出了明确的指示。"},
-    {w:"facilitate",p:"v.",zh:"促进；使便利",ex:"The new bridge will facilitate trade.",xz:"新桥将促进贸易。"},
-    {w:"feasible",p:"adj.",zh:"可行的",ex:"Is this plan economically feasible?",xz:"这个计划在经济上可行吗？"},
-    {w:"fluctuate",p:"v.",zh:"波动",ex:"Oil prices fluctuate with the seasons.",xz:"油价随季节波动。"},
-    {w:"fundamental",p:"adj.",zh:"基本的；根本的",ex:"Trust is fundamental to friendship.",xz:"信任是友谊的根本。"},
-    {w:"hypothesis",p:"n.",zh:"假说；假设",ex:"The experiment tested his hypothesis.",xz:"这个实验检验了他的假说。"},
-    {w:"implement",p:"v.",zh:"实施；执行",ex:"The school implemented a new timetable.",xz:"学校实施了新的作息表。"},
-    {w:"implicit",p:"adj.",zh:"含蓄的；隐含的",ex:"There was implicit criticism in her words.",xz:"她的话中含有隐含的批评。"},
-    {w:"incentive",p:"n.",zh:"激励；动机",ex:"Bonuses give workers an incentive to work harder.",xz:"奖金激励员工更努力地工作。"},
-    {w:"inevitable",p:"adj.",zh:"不可避免的",ex:"Change is inevitable in life.",xz:"生活中的变化是不可避免的。"},
-    {w:"inherent",p:"adj.",zh:"固有的；内在的",ex:"Risk is inherent in any investment.",xz:"任何投资都有固有的风险。"},
-    {w:"initiative",p:"n.",zh:"主动性；倡议",ex:"She showed great initiative at work.",xz:"她在工作中表现出很强的主动性。"},
-    {w:"innovation",p:"n.",zh:"创新",ex:"Innovation drives economic growth.",xz:"创新推动经济增长。"},
-    {w:"integrate",p:"v.",zh:"整合；融合",ex:"The app integrates maps and payment.",xz:"这款应用整合了地图和支付功能。"},
-    {w:"justify",p:"v.",zh:"证明…有理；为…辩护",ex:"Nothing can justify cheating in exams.",xz:"任何理由都不能为考试作弊辩护。"},
-    {w:"legitimate",p:"adj.",zh:"合法的；正当的",ex:"She has a legitimate reason to be absent.",xz:"她缺席有正当理由。"},
-    {w:"magnitude",p:"n.",zh:"重大；量级",ex:"They didn't realize the magnitude of the problem.",xz:"他们没有意识到问题的严重程度。"},
-    {w:"mandatory",p:"adj.",zh:"强制的；必须的",ex:"Attendance at the meeting is mandatory.",xz:"参加会议是强制性的。"},
-    {w:"notion",p:"n.",zh:"观念；概念",ex:"I reject the notion that money equals happiness.",xz:"我不认同金钱等于幸福的观念。"},
-    {w:"objective",p:"n./adj.",zh:"目标；客观的",ex:"Try to stay objective when judging.",xz:"评判时尽量保持客观。"},
-    {w:"perceive",p:"v.",zh:"感知；认为",ex:"People perceive colors differently.",xz:"人们对颜色的感知各不相同。"},
-    {w:"phenomenon",p:"n.",zh:"现象",ex:"The aurora is a natural phenomenon.",xz:"极光是一种自然现象。"},
-    {w:"plausible",p:"adj.",zh:"貌似合理的",ex:"His excuse sounded plausible but was false.",xz:"他的借口听上去合理，其实是假的。"},
-    {w:"pragmatic",p:"adj.",zh:"务实的",ex:"We need a pragmatic approach to the problem.",xz:"我们需要用务实的方法解决这个问题。"},
-    {w:"preliminary",p:"adj.",zh:"初步的",ex:"These are only preliminary results.",xz:"这些只是初步结果。"},
-    {w:"prevail",p:"v.",zh:"盛行；获胜",ex:"Justice will prevail in the end.",xz:"正义终将获胜。"},
-    {w:"profound",p:"adj.",zh:"深刻的；深远的",ex:"The internet has a profound impact on society.",xz:"互联网对社会有深远影响。"},
-    {w:"prohibit",p:"v.",zh:"禁止",ex:"Smoking is prohibited in the library.",xz:"图书馆内禁止吸烟。"},
-    {w:"rational",p:"adj.",zh:"理性的；合理的",ex:"Make a rational decision, not an emotional one.",xz:"要做理性的决定，而不是情绪化的决定。"},
-    {w:"reinforce",p:"v.",zh:"加强；强化",ex:"Practice reinforces what you learn in class.",xz:"练习能巩固课堂所学。"},
-    {w:"reluctant",p:"adj.",zh:"不情愿的",ex:"He was reluctant to admit his mistake.",xz:"他不愿承认自己的错误。"},
-    {w:"rigorous",p:"adj.",zh:"严格的；严谨的",ex:"The theory passed rigorous testing.",xz:"该理论经受了严格的检验。"},
-    {w:"skeptical",p:"adj.",zh:"怀疑的",ex:"I am skeptical about his promise.",xz:"我对他的承诺持怀疑态度。"},
-    {w:"sophisticated",p:"adj.",zh:"复杂精密的；老练的",ex:"Modern phones are sophisticated devices.",xz:"现代手机是精密复杂的设备。"},
-    {w:"spontaneous",p:"adj.",zh:"自发的",ex:"The crowd broke into spontaneous applause.",xz:"人群自发地鼓起掌来。"},
-    {w:"subsequent",p:"adj.",zh:"随后的",ex:"The error was fixed in subsequent versions.",xz:"这个错误在随后的版本中被修复了。"},
-    {w:"subtle",p:"adj.",zh:"微妙的；细微的",ex:"There is a subtle difference between the two words.",xz:"这两个词之间有细微的差别。"},
-    {w:"sufficient",p:"adj.",zh:"足够的",ex:"We have sufficient time to finish the task.",xz:"我们有足够的时间完成任务。"}
-  ]
-};
+const DECKS = {}, LEVEL_INFO = {}, LEVELS = [];
 
-const LEVEL_INFO = {
-  primary:  {emoji:"🌱", name:"小学",  en:"Primary",   desc:"基础生活词汇"},
-  secondary:{emoji:"🌿", name:"中学",  en:"Secondary", desc:"中考/高考常见词"},
-  tertiary: {emoji:"🌳", name:"大学",  en:"Tertiary",  desc:"四六级/学术词汇"}
-};
+async function loadDecks(){
+  const res = await fetch("data/levels.json");
+  if(!res.ok) throw new Error("levels.json " + res.status);
+  const manifest = await res.json();
+  const decks = await Promise.all(manifest.map(async m => {
+    const r = await fetch("data/" + m.file);
+    if(!r.ok) throw new Error(m.file + " " + r.status);
+    return r.json();
+  }));
+  manifest.forEach((m, i) => {
+    LEVELS.push(m.id);
+    LEVEL_INFO[m.id] = m;
+    DECKS[m.id] = decks[i];
+  });
+}
 
 /* =====================================================================
    进度存储：progress[level][word] = { b:盒子1-5, due:时间戳 }
@@ -561,7 +378,7 @@ let curMode = "study", curLevel = null;
 function renderHome(){
   const wrap = $("levels");
   wrap.innerHTML = "";
-  for(const key of ["primary","secondary","tertiary"]){
+  for(const key of LEVELS){
     const info = LEVEL_INFO[key], st = levelStats(key);
     const pct = Math.round(st.mastered / st.total * 100);
     const div = document.createElement("div");
@@ -857,7 +674,13 @@ function showResult({emoji, title, score, detail, again}){
 }
 $("rAgain").onclick = () => { if(rAgainFn) rAgainFn(); };
 
-renderHome();
+loadDecks().then(renderHome).catch(err => {
+  console.error(err);
+  $("levels").innerHTML = `<div class="level" style="cursor:default">⚠️ 词库加载失败。<br>
+    <small style="color:var(--muted)">请通过网页服务器打开本页（如在项目目录运行
+    <b>python3 -m http.server</b> 后访问 localhost:8000）。直接双击 index.html
+    时浏览器不允许读取 data/ 目录。</small></div>`;
+});
 </script>
 </body>
 </html>

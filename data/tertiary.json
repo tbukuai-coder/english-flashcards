@@ -1,0 +1,450 @@
+[
+  {
+    "w": "abstract",
+    "p": "adj.",
+    "zh": "抽象的",
+    "ex": "Freedom is an abstract concept.",
+    "xz": "自由是一个抽象的概念。"
+  },
+  {
+    "w": "accumulate",
+    "p": "v.",
+    "zh": "积累",
+    "ex": "He accumulated rich experience through practice.",
+    "xz": "他通过实践积累了丰富经验。"
+  },
+  {
+    "w": "adequate",
+    "p": "adj.",
+    "zh": "充足的；足够的",
+    "ex": "Make sure you get adequate sleep before the exam.",
+    "xz": "考试前要保证充足的睡眠。"
+  },
+  {
+    "w": "ambiguous",
+    "p": "adj.",
+    "zh": "模棱两可的；含糊的",
+    "ex": "His answer was deliberately ambiguous.",
+    "xz": "他的回答故意含糊其辞。"
+  },
+  {
+    "w": "analyze",
+    "p": "v.",
+    "zh": "分析",
+    "ex": "We need to analyze the data first.",
+    "xz": "我们需要先分析数据。"
+  },
+  {
+    "w": "anticipate",
+    "p": "v.",
+    "zh": "预期；预料",
+    "ex": "We anticipate strong demand for the product.",
+    "xz": "我们预计该产品需求旺盛。"
+  },
+  {
+    "w": "assess",
+    "p": "v.",
+    "zh": "评估",
+    "ex": "Teachers assess students' progress each term.",
+    "xz": "老师每学期评估学生的进步。"
+  },
+  {
+    "w": "assume",
+    "p": "v.",
+    "zh": "假定；承担",
+    "ex": "Let's assume the plan works.",
+    "xz": "我们假设这个计划可行。"
+  },
+  {
+    "w": "attribute",
+    "p": "v./n.",
+    "zh": "把…归因于；属性",
+    "ex": "She attributes her success to hard work.",
+    "xz": "她把成功归因于努力。"
+  },
+  {
+    "w": "coherent",
+    "p": "adj.",
+    "zh": "连贯的；条理清晰的",
+    "ex": "Your essay needs a more coherent structure.",
+    "xz": "你的文章需要更连贯的结构。"
+  },
+  {
+    "w": "comprehensive",
+    "p": "adj.",
+    "zh": "全面的",
+    "ex": "The report gives a comprehensive review of the market.",
+    "xz": "这份报告对市场做了全面回顾。"
+  },
+  {
+    "w": "consecutive",
+    "p": "adj.",
+    "zh": "连续的",
+    "ex": "It rained for five consecutive days.",
+    "xz": "连续下了五天雨。"
+  },
+  {
+    "w": "constrain",
+    "p": "v.",
+    "zh": "限制；约束",
+    "ex": "The project is constrained by its budget.",
+    "xz": "这个项目受预算限制。"
+  },
+  {
+    "w": "contradict",
+    "p": "v.",
+    "zh": "反驳；与…矛盾",
+    "ex": "The results contradict the earlier theory.",
+    "xz": "这些结果与先前的理论相矛盾。"
+  },
+  {
+    "w": "controversial",
+    "p": "adj.",
+    "zh": "有争议的",
+    "ex": "The new policy is highly controversial.",
+    "xz": "这项新政策争议很大。"
+  },
+  {
+    "w": "criterion",
+    "p": "n.",
+    "zh": "标准；准则",
+    "ex": "Price is not the only criterion for choice.",
+    "xz": "价格不是选择的唯一标准。"
+  },
+  {
+    "w": "derive",
+    "p": "v.",
+    "zh": "源于；获得",
+    "ex": "Many English words derive from Latin.",
+    "xz": "许多英语单词源自拉丁语。"
+  },
+  {
+    "w": "dilemma",
+    "p": "n.",
+    "zh": "困境；两难",
+    "ex": "She faced a dilemma between career and family.",
+    "xz": "她面临事业与家庭的两难。"
+  },
+  {
+    "w": "diminish",
+    "p": "v.",
+    "zh": "减少；减弱",
+    "ex": "His influence has diminished over time.",
+    "xz": "他的影响力随时间减弱了。"
+  },
+  {
+    "w": "distribute",
+    "p": "v.",
+    "zh": "分发；分配",
+    "ex": "The volunteers distributed food to the victims.",
+    "xz": "志愿者向灾民分发食物。"
+  },
+  {
+    "w": "elaborate",
+    "p": "adj./v.",
+    "zh": "详尽的；详细阐述",
+    "ex": "Could you elaborate on your proposal?",
+    "xz": "你能详细说明你的提议吗？"
+  },
+  {
+    "w": "eliminate",
+    "p": "v.",
+    "zh": "消除；淘汰",
+    "ex": "The team was eliminated in the first round.",
+    "xz": "该队在第一轮就被淘汰了。"
+  },
+  {
+    "w": "empirical",
+    "p": "adj.",
+    "zh": "经验的；实证的",
+    "ex": "The theory lacks empirical evidence.",
+    "xz": "这个理论缺乏实证依据。"
+  },
+  {
+    "w": "enhance",
+    "p": "v.",
+    "zh": "增强；提高",
+    "ex": "Good lighting enhances the photo quality.",
+    "xz": "良好的光线能提升照片质量。"
+  },
+  {
+    "w": "evaluate",
+    "p": "v.",
+    "zh": "评价；评估",
+    "ex": "We must evaluate the risks before investing.",
+    "xz": "投资前我们必须评估风险。"
+  },
+  {
+    "w": "evident",
+    "p": "adj.",
+    "zh": "明显的",
+    "ex": "It is evident that he is lying.",
+    "xz": "很明显他在撒谎。"
+  },
+  {
+    "w": "explicit",
+    "p": "adj.",
+    "zh": "明确的；清楚的",
+    "ex": "The teacher gave explicit instructions.",
+    "xz": "老师给出了明确的指示。"
+  },
+  {
+    "w": "facilitate",
+    "p": "v.",
+    "zh": "促进；使便利",
+    "ex": "The new bridge will facilitate trade.",
+    "xz": "新桥将促进贸易。"
+  },
+  {
+    "w": "feasible",
+    "p": "adj.",
+    "zh": "可行的",
+    "ex": "Is this plan economically feasible?",
+    "xz": "这个计划在经济上可行吗？"
+  },
+  {
+    "w": "fluctuate",
+    "p": "v.",
+    "zh": "波动",
+    "ex": "Oil prices fluctuate with the seasons.",
+    "xz": "油价随季节波动。"
+  },
+  {
+    "w": "fundamental",
+    "p": "adj.",
+    "zh": "基本的；根本的",
+    "ex": "Trust is fundamental to friendship.",
+    "xz": "信任是友谊的根本。"
+  },
+  {
+    "w": "hypothesis",
+    "p": "n.",
+    "zh": "假说；假设",
+    "ex": "The experiment tested his hypothesis.",
+    "xz": "这个实验检验了他的假说。"
+  },
+  {
+    "w": "implement",
+    "p": "v.",
+    "zh": "实施；执行",
+    "ex": "The school implemented a new timetable.",
+    "xz": "学校实施了新的作息表。"
+  },
+  {
+    "w": "implicit",
+    "p": "adj.",
+    "zh": "含蓄的；隐含的",
+    "ex": "There was implicit criticism in her words.",
+    "xz": "她的话中含有隐含的批评。"
+  },
+  {
+    "w": "incentive",
+    "p": "n.",
+    "zh": "激励；动机",
+    "ex": "Bonuses give workers an incentive to work harder.",
+    "xz": "奖金激励员工更努力地工作。"
+  },
+  {
+    "w": "inevitable",
+    "p": "adj.",
+    "zh": "不可避免的",
+    "ex": "Change is inevitable in life.",
+    "xz": "生活中的变化是不可避免的。"
+  },
+  {
+    "w": "inherent",
+    "p": "adj.",
+    "zh": "固有的；内在的",
+    "ex": "Risk is inherent in any investment.",
+    "xz": "任何投资都有固有的风险。"
+  },
+  {
+    "w": "initiative",
+    "p": "n.",
+    "zh": "主动性；倡议",
+    "ex": "She showed great initiative at work.",
+    "xz": "她在工作中表现出很强的主动性。"
+  },
+  {
+    "w": "innovation",
+    "p": "n.",
+    "zh": "创新",
+    "ex": "Innovation drives economic growth.",
+    "xz": "创新推动经济增长。"
+  },
+  {
+    "w": "integrate",
+    "p": "v.",
+    "zh": "整合；融合",
+    "ex": "The app integrates maps and payment.",
+    "xz": "这款应用整合了地图和支付功能。"
+  },
+  {
+    "w": "justify",
+    "p": "v.",
+    "zh": "证明…有理；为…辩护",
+    "ex": "Nothing can justify cheating in exams.",
+    "xz": "任何理由都不能为考试作弊辩护。"
+  },
+  {
+    "w": "legitimate",
+    "p": "adj.",
+    "zh": "合法的；正当的",
+    "ex": "She has a legitimate reason to be absent.",
+    "xz": "她缺席有正当理由。"
+  },
+  {
+    "w": "magnitude",
+    "p": "n.",
+    "zh": "重大；量级",
+    "ex": "They didn't realize the magnitude of the problem.",
+    "xz": "他们没有意识到问题的严重程度。"
+  },
+  {
+    "w": "mandatory",
+    "p": "adj.",
+    "zh": "强制的；必须的",
+    "ex": "Attendance at the meeting is mandatory.",
+    "xz": "参加会议是强制性的。"
+  },
+  {
+    "w": "notion",
+    "p": "n.",
+    "zh": "观念；概念",
+    "ex": "I reject the notion that money equals happiness.",
+    "xz": "我不认同金钱等于幸福的观念。"
+  },
+  {
+    "w": "objective",
+    "p": "n./adj.",
+    "zh": "目标；客观的",
+    "ex": "Try to stay objective when judging.",
+    "xz": "评判时尽量保持客观。"
+  },
+  {
+    "w": "perceive",
+    "p": "v.",
+    "zh": "感知；认为",
+    "ex": "People perceive colors differently.",
+    "xz": "人们对颜色的感知各不相同。"
+  },
+  {
+    "w": "phenomenon",
+    "p": "n.",
+    "zh": "现象",
+    "ex": "The aurora is a natural phenomenon.",
+    "xz": "极光是一种自然现象。"
+  },
+  {
+    "w": "plausible",
+    "p": "adj.",
+    "zh": "貌似合理的",
+    "ex": "His excuse sounded plausible but was false.",
+    "xz": "他的借口听上去合理，其实是假的。"
+  },
+  {
+    "w": "pragmatic",
+    "p": "adj.",
+    "zh": "务实的",
+    "ex": "We need a pragmatic approach to the problem.",
+    "xz": "我们需要用务实的方法解决这个问题。"
+  },
+  {
+    "w": "preliminary",
+    "p": "adj.",
+    "zh": "初步的",
+    "ex": "These are only preliminary results.",
+    "xz": "这些只是初步结果。"
+  },
+  {
+    "w": "prevail",
+    "p": "v.",
+    "zh": "盛行；获胜",
+    "ex": "Justice will prevail in the end.",
+    "xz": "正义终将获胜。"
+  },
+  {
+    "w": "profound",
+    "p": "adj.",
+    "zh": "深刻的；深远的",
+    "ex": "The internet has a profound impact on society.",
+    "xz": "互联网对社会有深远影响。"
+  },
+  {
+    "w": "prohibit",
+    "p": "v.",
+    "zh": "禁止",
+    "ex": "Smoking is prohibited in the library.",
+    "xz": "图书馆内禁止吸烟。"
+  },
+  {
+    "w": "rational",
+    "p": "adj.",
+    "zh": "理性的；合理的",
+    "ex": "Make a rational decision, not an emotional one.",
+    "xz": "要做理性的决定，而不是情绪化的决定。"
+  },
+  {
+    "w": "reinforce",
+    "p": "v.",
+    "zh": "加强；强化",
+    "ex": "Practice reinforces what you learn in class.",
+    "xz": "练习能巩固课堂所学。"
+  },
+  {
+    "w": "reluctant",
+    "p": "adj.",
+    "zh": "不情愿的",
+    "ex": "He was reluctant to admit his mistake.",
+    "xz": "他不愿承认自己的错误。"
+  },
+  {
+    "w": "rigorous",
+    "p": "adj.",
+    "zh": "严格的；严谨的",
+    "ex": "The theory passed rigorous testing.",
+    "xz": "该理论经受了严格的检验。"
+  },
+  {
+    "w": "skeptical",
+    "p": "adj.",
+    "zh": "怀疑的",
+    "ex": "I am skeptical about his promise.",
+    "xz": "我对他的承诺持怀疑态度。"
+  },
+  {
+    "w": "sophisticated",
+    "p": "adj.",
+    "zh": "复杂精密的；老练的",
+    "ex": "Modern phones are sophisticated devices.",
+    "xz": "现代手机是精密复杂的设备。"
+  },
+  {
+    "w": "spontaneous",
+    "p": "adj.",
+    "zh": "自发的",
+    "ex": "The crowd broke into spontaneous applause.",
+    "xz": "人群自发地鼓起掌来。"
+  },
+  {
+    "w": "subsequent",
+    "p": "adj.",
+    "zh": "随后的",
+    "ex": "The error was fixed in subsequent versions.",
+    "xz": "这个错误在随后的版本中被修复了。"
+  },
+  {
+    "w": "subtle",
+    "p": "adj.",
+    "zh": "微妙的；细微的",
+    "ex": "There is a subtle difference between the two words.",
+    "xz": "这两个词之间有细微的差别。"
+  },
+  {
+    "w": "sufficient",
+    "p": "adj.",
+    "zh": "足够的",
+    "ex": "We have sufficient time to finish the task.",
+    "xz": "我们有足够的时间完成任务。"
+  }
+]

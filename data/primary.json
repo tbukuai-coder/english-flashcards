@@ -1,0 +1,422 @@
+[
+  {
+    "w": "apple",
+    "p": "n.",
+    "zh": "苹果",
+    "ex": "I eat an apple every day.",
+    "xz": "我每天吃一个苹果。"
+  },
+  {
+    "w": "book",
+    "p": "n.",
+    "zh": "书",
+    "ex": "This book is very interesting.",
+    "xz": "这本书很有趣。"
+  },
+  {
+    "w": "cat",
+    "p": "n.",
+    "zh": "猫",
+    "ex": "The cat is sleeping on the sofa.",
+    "xz": "猫正在沙发上睡觉。"
+  },
+  {
+    "w": "dog",
+    "p": "n.",
+    "zh": "狗",
+    "ex": "My dog likes to play ball.",
+    "xz": "我的狗喜欢玩球。"
+  },
+  {
+    "w": "sun",
+    "p": "n.",
+    "zh": "太阳",
+    "ex": "The sun is very bright today.",
+    "xz": "今天太阳很亮。"
+  },
+  {
+    "w": "moon",
+    "p": "n.",
+    "zh": "月亮",
+    "ex": "The moon is round tonight.",
+    "xz": "今晚的月亮很圆。"
+  },
+  {
+    "w": "star",
+    "p": "n.",
+    "zh": "星星",
+    "ex": "I can see many stars in the sky.",
+    "xz": "我能看到天上有很多星星。"
+  },
+  {
+    "w": "water",
+    "p": "n.",
+    "zh": "水",
+    "ex": "Please drink more water.",
+    "xz": "请多喝水。"
+  },
+  {
+    "w": "milk",
+    "p": "n.",
+    "zh": "牛奶",
+    "ex": "I drink milk every morning.",
+    "xz": "我每天早上喝牛奶。"
+  },
+  {
+    "w": "egg",
+    "p": "n.",
+    "zh": "鸡蛋",
+    "ex": "Mom cooked an egg for me.",
+    "xz": "妈妈给我煮了一个鸡蛋。"
+  },
+  {
+    "w": "bread",
+    "p": "n.",
+    "zh": "面包",
+    "ex": "I had bread for breakfast.",
+    "xz": "我早餐吃了面包。"
+  },
+  {
+    "w": "rice",
+    "p": "n.",
+    "zh": "米饭",
+    "ex": "We eat rice for dinner.",
+    "xz": "我们晚餐吃米饭。"
+  },
+  {
+    "w": "cake",
+    "p": "n.",
+    "zh": "蛋糕",
+    "ex": "The birthday cake is sweet.",
+    "xz": "生日蛋糕很甜。"
+  },
+  {
+    "w": "fish",
+    "p": "n.",
+    "zh": "鱼",
+    "ex": "There are three fish in the tank.",
+    "xz": "鱼缸里有三条鱼。"
+  },
+  {
+    "w": "bird",
+    "p": "n.",
+    "zh": "鸟",
+    "ex": "A bird is singing in the tree.",
+    "xz": "一只鸟在树上唱歌。"
+  },
+  {
+    "w": "tree",
+    "p": "n.",
+    "zh": "树",
+    "ex": "There is a big tree in the park.",
+    "xz": "公园里有一棵大树。"
+  },
+  {
+    "w": "flower",
+    "p": "n.",
+    "zh": "花",
+    "ex": "The flower smells nice.",
+    "xz": "这朵花闻起来很香。"
+  },
+  {
+    "w": "red",
+    "p": "adj.",
+    "zh": "红色的",
+    "ex": "She has a red hat.",
+    "xz": "她有一顶红色的帽子。"
+  },
+  {
+    "w": "blue",
+    "p": "adj.",
+    "zh": "蓝色的",
+    "ex": "The sky is blue.",
+    "xz": "天空是蓝色的。"
+  },
+  {
+    "w": "green",
+    "p": "adj.",
+    "zh": "绿色的",
+    "ex": "The grass is green.",
+    "xz": "草是绿色的。"
+  },
+  {
+    "w": "yellow",
+    "p": "adj.",
+    "zh": "黄色的",
+    "ex": "Bananas are yellow.",
+    "xz": "香蕉是黄色的。"
+  },
+  {
+    "w": "big",
+    "p": "adj.",
+    "zh": "大的",
+    "ex": "An elephant is very big.",
+    "xz": "大象非常大。"
+  },
+  {
+    "w": "small",
+    "p": "adj.",
+    "zh": "小的",
+    "ex": "A mouse is small.",
+    "xz": "老鼠很小。"
+  },
+  {
+    "w": "hot",
+    "p": "adj.",
+    "zh": "热的",
+    "ex": "The soup is too hot.",
+    "xz": "汤太烫了。"
+  },
+  {
+    "w": "cold",
+    "p": "adj.",
+    "zh": "冷的",
+    "ex": "It is cold in winter.",
+    "xz": "冬天很冷。"
+  },
+  {
+    "w": "happy",
+    "p": "adj.",
+    "zh": "高兴的",
+    "ex": "I am happy to see you.",
+    "xz": "见到你我很高兴。"
+  },
+  {
+    "w": "sad",
+    "p": "adj.",
+    "zh": "难过的",
+    "ex": "She is sad because she lost her pen.",
+    "xz": "她因为丢了钢笔而难过。"
+  },
+  {
+    "w": "new",
+    "p": "adj.",
+    "zh": "新的",
+    "ex": "I have a new schoolbag.",
+    "xz": "我有一个新书包。"
+  },
+  {
+    "w": "old",
+    "p": "adj.",
+    "zh": "旧的；年老的",
+    "ex": "My grandpa is old but strong.",
+    "xz": "我爷爷年纪大但很健壮。"
+  },
+  {
+    "w": "fast",
+    "p": "adj.",
+    "zh": "快的",
+    "ex": "The train is very fast.",
+    "xz": "火车非常快。"
+  },
+  {
+    "w": "slow",
+    "p": "adj.",
+    "zh": "慢的",
+    "ex": "The turtle is slow.",
+    "xz": "乌龟很慢。"
+  },
+  {
+    "w": "run",
+    "p": "v.",
+    "zh": "跑",
+    "ex": "I run to school every day.",
+    "xz": "我每天跑步去上学。"
+  },
+  {
+    "w": "jump",
+    "p": "v.",
+    "zh": "跳",
+    "ex": "The rabbit can jump high.",
+    "xz": "兔子能跳得很高。"
+  },
+  {
+    "w": "walk",
+    "p": "v.",
+    "zh": "走路",
+    "ex": "We walk to the park together.",
+    "xz": "我们一起走路去公园。"
+  },
+  {
+    "w": "swim",
+    "p": "v.",
+    "zh": "游泳",
+    "ex": "I can swim in the pool.",
+    "xz": "我会在泳池里游泳。"
+  },
+  {
+    "w": "fly",
+    "p": "v.",
+    "zh": "飞",
+    "ex": "Birds can fly in the sky.",
+    "xz": "鸟儿会在天上飞。"
+  },
+  {
+    "w": "sing",
+    "p": "v.",
+    "zh": "唱歌",
+    "ex": "She likes to sing songs.",
+    "xz": "她喜欢唱歌。"
+  },
+  {
+    "w": "dance",
+    "p": "v.",
+    "zh": "跳舞",
+    "ex": "They dance at the party.",
+    "xz": "他们在聚会上跳舞。"
+  },
+  {
+    "w": "read",
+    "p": "v.",
+    "zh": "读；阅读",
+    "ex": "I read a story before bed.",
+    "xz": "我睡前读一个故事。"
+  },
+  {
+    "w": "write",
+    "p": "v.",
+    "zh": "写",
+    "ex": "Please write your name here.",
+    "xz": "请在这里写下你的名字。"
+  },
+  {
+    "w": "eat",
+    "p": "v.",
+    "zh": "吃",
+    "ex": "We eat lunch at noon.",
+    "xz": "我们中午吃午饭。"
+  },
+  {
+    "w": "drink",
+    "p": "v.",
+    "zh": "喝",
+    "ex": "He drinks juice after dinner.",
+    "xz": "他晚饭后喝果汁。"
+  },
+  {
+    "w": "sleep",
+    "p": "v.",
+    "zh": "睡觉",
+    "ex": "I sleep at nine o'clock.",
+    "xz": "我九点睡觉。"
+  },
+  {
+    "w": "play",
+    "p": "v.",
+    "zh": "玩；打（球）",
+    "ex": "Let's play football after school.",
+    "xz": "放学后我们去踢足球吧。"
+  },
+  {
+    "w": "school",
+    "p": "n.",
+    "zh": "学校",
+    "ex": "Our school is big and beautiful.",
+    "xz": "我们的学校又大又漂亮。"
+  },
+  {
+    "w": "teacher",
+    "p": "n.",
+    "zh": "老师",
+    "ex": "My teacher is very kind.",
+    "xz": "我的老师非常和蔼。"
+  },
+  {
+    "w": "student",
+    "p": "n.",
+    "zh": "学生",
+    "ex": "There are forty students in my class.",
+    "xz": "我们班有四十名学生。"
+  },
+  {
+    "w": "friend",
+    "p": "n.",
+    "zh": "朋友",
+    "ex": "Tom is my best friend.",
+    "xz": "汤姆是我最好的朋友。"
+  },
+  {
+    "w": "family",
+    "p": "n.",
+    "zh": "家庭",
+    "ex": "I love my family.",
+    "xz": "我爱我的家庭。"
+  },
+  {
+    "w": "mother",
+    "p": "n.",
+    "zh": "妈妈",
+    "ex": "My mother cooks well.",
+    "xz": "我妈妈做饭很好吃。"
+  },
+  {
+    "w": "father",
+    "p": "n.",
+    "zh": "爸爸",
+    "ex": "My father works in a hospital.",
+    "xz": "我爸爸在医院工作。"
+  },
+  {
+    "w": "house",
+    "p": "n.",
+    "zh": "房子",
+    "ex": "They live in a white house.",
+    "xz": "他们住在一栋白色的房子里。"
+  },
+  {
+    "w": "door",
+    "p": "n.",
+    "zh": "门",
+    "ex": "Please close the door.",
+    "xz": "请关上门。"
+  },
+  {
+    "w": "window",
+    "p": "n.",
+    "zh": "窗户",
+    "ex": "Open the window, please.",
+    "xz": "请打开窗户。"
+  },
+  {
+    "w": "chair",
+    "p": "n.",
+    "zh": "椅子",
+    "ex": "Sit on the chair, please.",
+    "xz": "请坐在椅子上。"
+  },
+  {
+    "w": "table",
+    "p": "n.",
+    "zh": "桌子",
+    "ex": "The cup is on the table.",
+    "xz": "杯子在桌子上。"
+  },
+  {
+    "w": "pen",
+    "p": "n.",
+    "zh": "钢笔",
+    "ex": "May I use your pen?",
+    "xz": "我可以用你的钢笔吗？"
+  },
+  {
+    "w": "bag",
+    "p": "n.",
+    "zh": "书包；袋子",
+    "ex": "My bag is heavy today.",
+    "xz": "我今天的书包很重。"
+  },
+  {
+    "w": "hat",
+    "p": "n.",
+    "zh": "帽子",
+    "ex": "He wears a hat in summer.",
+    "xz": "他夏天戴帽子。"
+  },
+  {
+    "w": "shoe",
+    "p": "n.",
+    "zh": "鞋子",
+    "ex": "These shoes are too small.",
+    "xz": "这双鞋太小了。"
+  }
+]

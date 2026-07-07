@@ -1,6 +1,6 @@
 # 单词闪卡 · English Flashcards
 
-A zero-dependency, single-file HTML flashcard app for learning English vocabulary with Chinese translations. Made for students at three levels:
+A zero-dependency HTML flashcard app for learning English vocabulary with Chinese translations — one `index.html` plus per-level JSON word lists in `data/`. Made for students at three levels:
 
 - 🌱 **小学 Primary** — 60 basic everyday words
 - 🌿 **中学 Secondary** — 64 common exam words (中考/高考 range)
@@ -10,7 +10,14 @@ Every word carries part of speech, Chinese meaning, and a short bilingual exampl
 
 ## Run it
 
-Open `index.html` in any modern browser. No build step, no server, no dependencies. Works offline; mobile-friendly; light/dark theme follows the system.
+Serve the folder over HTTP and open it in any modern browser — no build step, no dependencies. Live at https://tbukuai-coder.github.io/english-flashcards/ (GitHub Pages). Locally:
+
+```bash
+cd english-flashcards
+python3 -m http.server 8000   # then open http://localhost:8000
+```
+
+A server is needed because the word lists load from `data/*.json` via `fetch()`, which browsers block on `file://` — double-clicking `index.html` shows a friendly error explaining this. Mobile-friendly; light/dark theme follows the system.
 
 ## Modes
 
@@ -26,10 +33,17 @@ All progress lives in `localStorage` under the key `english-flashcards-v1` (per 
 
 ## Extending the word lists
 
-All data is the `DECKS` object at the top of the `<script>` block in `index.html`. Each entry:
+All word data lives in `data/`, one JSON file per level plus a manifest:
 
-```js
-{w:"apple", p:"n.", zh:"苹果", ex:"I eat an apple every day.", xz:"我每天吃一个苹果。"}
+- `data/levels.json` — the list of levels, in home-screen order. Each entry: `{"id", "emoji", "name", "en", "desc", "file"}`.
+- `data/primary.json` / `secondary.json` / `tertiary.json` — arrays of word entries:
+
+```json
+{"w": "apple", "p": "n.", "zh": "苹果", "ex": "I eat an apple every day.", "xz": "我每天吃一个苹果。"}
 ```
 
-Add entries to any level (or add a new level: give it a key in `DECKS` plus a matching entry in `LEVEL_INFO`). Word text (`w`) is the storage key, so renaming a word resets its progress.
+**To add words**: append entries to the level's JSON file (`w`=word, `p`=part of speech, `zh`=Chinese meaning, `ex`=example sentence, `xz`=example translation). No code changes needed.
+
+**To add a whole new level** (e.g. 雅思/IELTS): create `data/ielts.json` with word entries, then add a record to `data/levels.json` pointing at it. The app reads the manifest at startup, so the new level appears automatically.
+
+The word text (`w`) is the progress-storage key, so renaming a word resets its learning progress.

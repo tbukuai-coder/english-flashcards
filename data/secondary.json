@@ -1,0 +1,450 @@
+[
+  {
+    "w": "achieve",
+    "p": "v.",
+    "zh": "实现；达到",
+    "ex": "She worked hard to achieve her goal.",
+    "xz": "她努力工作以实现目标。"
+  },
+  {
+    "w": "advantage",
+    "p": "n.",
+    "zh": "优势；好处",
+    "ex": "Speaking two languages is a big advantage.",
+    "xz": "会说两种语言是很大的优势。"
+  },
+  {
+    "w": "advice",
+    "p": "n.",
+    "zh": "建议",
+    "ex": "My teacher gave me useful advice.",
+    "xz": "老师给了我有用的建议。"
+  },
+  {
+    "w": "afraid",
+    "p": "adj.",
+    "zh": "害怕的",
+    "ex": "Don't be afraid of making mistakes.",
+    "xz": "不要害怕犯错。"
+  },
+  {
+    "w": "agree",
+    "p": "v.",
+    "zh": "同意",
+    "ex": "I agree with your plan.",
+    "xz": "我同意你的计划。"
+  },
+  {
+    "w": "ancient",
+    "p": "adj.",
+    "zh": "古代的；古老的",
+    "ex": "We visited an ancient temple.",
+    "xz": "我们参观了一座古老的寺庙。"
+  },
+  {
+    "w": "avoid",
+    "p": "v.",
+    "zh": "避免",
+    "ex": "You should avoid eating too much sugar.",
+    "xz": "你应该避免吃太多糖。"
+  },
+  {
+    "w": "balance",
+    "p": "n./v.",
+    "zh": "平衡",
+    "ex": "Keep a balance between study and rest.",
+    "xz": "在学习和休息之间保持平衡。"
+  },
+  {
+    "w": "believe",
+    "p": "v.",
+    "zh": "相信",
+    "ex": "I believe you can do it.",
+    "xz": "我相信你能做到。"
+  },
+  {
+    "w": "borrow",
+    "p": "v.",
+    "zh": "借（入）",
+    "ex": "Can I borrow your dictionary?",
+    "xz": "我能借你的词典吗？"
+  },
+  {
+    "w": "brave",
+    "p": "adj.",
+    "zh": "勇敢的",
+    "ex": "The brave boy saved the little girl.",
+    "xz": "勇敢的男孩救了小女孩。"
+  },
+  {
+    "w": "celebrate",
+    "p": "v.",
+    "zh": "庆祝",
+    "ex": "We celebrate the Spring Festival with family.",
+    "xz": "我们和家人一起庆祝春节。"
+  },
+  {
+    "w": "challenge",
+    "p": "n./v.",
+    "zh": "挑战",
+    "ex": "Learning English is a challenge for me.",
+    "xz": "学英语对我来说是个挑战。"
+  },
+  {
+    "w": "choose",
+    "p": "v.",
+    "zh": "选择",
+    "ex": "You can choose any book you like.",
+    "xz": "你可以选任何你喜欢的书。"
+  },
+  {
+    "w": "communicate",
+    "p": "v.",
+    "zh": "交流；沟通",
+    "ex": "We communicate with each other in English.",
+    "xz": "我们用英语互相交流。"
+  },
+  {
+    "w": "compare",
+    "p": "v.",
+    "zh": "比较",
+    "ex": "Don't compare yourself with others too much.",
+    "xz": "不要过多地拿自己和别人比较。"
+  },
+  {
+    "w": "confident",
+    "p": "adj.",
+    "zh": "自信的",
+    "ex": "Be confident when you speak in class.",
+    "xz": "课堂发言时要自信。"
+  },
+  {
+    "w": "consider",
+    "p": "v.",
+    "zh": "考虑",
+    "ex": "Please consider my suggestion carefully.",
+    "xz": "请认真考虑我的建议。"
+  },
+  {
+    "w": "courage",
+    "p": "n.",
+    "zh": "勇气",
+    "ex": "It takes courage to admit mistakes.",
+    "xz": "承认错误需要勇气。"
+  },
+  {
+    "w": "create",
+    "p": "v.",
+    "zh": "创造",
+    "ex": "Artists create beautiful works.",
+    "xz": "艺术家创造美丽的作品。"
+  },
+  {
+    "w": "culture",
+    "p": "n.",
+    "zh": "文化",
+    "ex": "China has a long history and rich culture.",
+    "xz": "中国历史悠久，文化丰富。"
+  },
+  {
+    "w": "curious",
+    "p": "adj.",
+    "zh": "好奇的",
+    "ex": "Children are curious about everything.",
+    "xz": "孩子们对一切都很好奇。"
+  },
+  {
+    "w": "decision",
+    "p": "n.",
+    "zh": "决定",
+    "ex": "It was a difficult decision to make.",
+    "xz": "这是一个很难做的决定。"
+  },
+  {
+    "w": "describe",
+    "p": "v.",
+    "zh": "描述",
+    "ex": "Can you describe the picture in English?",
+    "xz": "你能用英语描述这幅图吗？"
+  },
+  {
+    "w": "develop",
+    "p": "v.",
+    "zh": "发展；培养",
+    "ex": "Reading helps develop your mind.",
+    "xz": "阅读有助于培养思维。"
+  },
+  {
+    "w": "discover",
+    "p": "v.",
+    "zh": "发现",
+    "ex": "Scientists discovered a new planet.",
+    "xz": "科学家发现了一颗新行星。"
+  },
+  {
+    "w": "education",
+    "p": "n.",
+    "zh": "教育",
+    "ex": "Everyone has the right to education.",
+    "xz": "每个人都有受教育的权利。"
+  },
+  {
+    "w": "effort",
+    "p": "n.",
+    "zh": "努力",
+    "ex": "Success needs time and effort.",
+    "xz": "成功需要时间和努力。"
+  },
+  {
+    "w": "encourage",
+    "p": "v.",
+    "zh": "鼓励",
+    "ex": "My parents encourage me to try new things.",
+    "xz": "父母鼓励我尝试新事物。"
+  },
+  {
+    "w": "energy",
+    "p": "n.",
+    "zh": "能量；精力",
+    "ex": "Young people are full of energy.",
+    "xz": "年轻人充满活力。"
+  },
+  {
+    "w": "environment",
+    "p": "n.",
+    "zh": "环境",
+    "ex": "We should protect the environment.",
+    "xz": "我们应该保护环境。"
+  },
+  {
+    "w": "especially",
+    "p": "adv.",
+    "zh": "尤其；特别",
+    "ex": "I like fruit, especially watermelon.",
+    "xz": "我喜欢水果，尤其是西瓜。"
+  },
+  {
+    "w": "exercise",
+    "p": "n./v.",
+    "zh": "锻炼；练习",
+    "ex": "Doing exercise keeps you healthy.",
+    "xz": "锻炼使你保持健康。"
+  },
+  {
+    "w": "experience",
+    "p": "n.",
+    "zh": "经验；经历",
+    "ex": "The trip was a wonderful experience.",
+    "xz": "这次旅行是一次美妙的经历。"
+  },
+  {
+    "w": "explain",
+    "p": "v.",
+    "zh": "解释",
+    "ex": "The teacher explained the rule again.",
+    "xz": "老师又解释了一遍规则。"
+  },
+  {
+    "w": "familiar",
+    "p": "adj.",
+    "zh": "熟悉的",
+    "ex": "His voice sounds familiar to me.",
+    "xz": "他的声音我听起来很熟悉。"
+  },
+  {
+    "w": "generous",
+    "p": "adj.",
+    "zh": "慷慨的",
+    "ex": "She is generous and often helps others.",
+    "xz": "她很慷慨，经常帮助别人。"
+  },
+  {
+    "w": "habit",
+    "p": "n.",
+    "zh": "习惯",
+    "ex": "Reading before bed is a good habit.",
+    "xz": "睡前阅读是个好习惯。"
+  },
+  {
+    "w": "imagine",
+    "p": "v.",
+    "zh": "想象",
+    "ex": "Imagine you could fly like a bird.",
+    "xz": "想象你能像鸟一样飞。"
+  },
+  {
+    "w": "improve",
+    "p": "v.",
+    "zh": "改进；提高",
+    "ex": "Practice can improve your spoken English.",
+    "xz": "练习能提高你的英语口语。"
+  },
+  {
+    "w": "include",
+    "p": "v.",
+    "zh": "包括",
+    "ex": "The price includes breakfast.",
+    "xz": "价格包含早餐。"
+  },
+  {
+    "w": "increase",
+    "p": "v./n.",
+    "zh": "增加",
+    "ex": "The number of students is increasing.",
+    "xz": "学生人数在增加。"
+  },
+  {
+    "w": "journey",
+    "p": "n.",
+    "zh": "旅行；旅程",
+    "ex": "The journey to Tibet took three days.",
+    "xz": "去西藏的旅程花了三天。"
+  },
+  {
+    "w": "knowledge",
+    "p": "n.",
+    "zh": "知识",
+    "ex": "Knowledge is power.",
+    "xz": "知识就是力量。"
+  },
+  {
+    "w": "language",
+    "p": "n.",
+    "zh": "语言",
+    "ex": "English is a world language.",
+    "xz": "英语是一门世界语言。"
+  },
+  {
+    "w": "measure",
+    "p": "v./n.",
+    "zh": "测量；措施",
+    "ex": "Let's measure the length of the desk.",
+    "xz": "我们来量一下课桌的长度。"
+  },
+  {
+    "w": "necessary",
+    "p": "adj.",
+    "zh": "必要的",
+    "ex": "It is necessary to sleep enough.",
+    "xz": "睡眠充足是必要的。"
+  },
+  {
+    "w": "nervous",
+    "p": "adj.",
+    "zh": "紧张的",
+    "ex": "I felt nervous before the exam.",
+    "xz": "考试前我感到紧张。"
+  },
+  {
+    "w": "opportunity",
+    "p": "n.",
+    "zh": "机会",
+    "ex": "Don't miss this good opportunity.",
+    "xz": "不要错过这个好机会。"
+  },
+  {
+    "w": "patient",
+    "p": "adj./n.",
+    "zh": "耐心的；病人",
+    "ex": "Be patient with young children.",
+    "xz": "对小孩子要有耐心。"
+  },
+  {
+    "w": "popular",
+    "p": "adj.",
+    "zh": "受欢迎的",
+    "ex": "Basketball is popular among boys.",
+    "xz": "篮球在男生中很受欢迎。"
+  },
+  {
+    "w": "prefer",
+    "p": "v.",
+    "zh": "更喜欢",
+    "ex": "I prefer tea to coffee.",
+    "xz": "比起咖啡我更喜欢茶。"
+  },
+  {
+    "w": "prepare",
+    "p": "v.",
+    "zh": "准备",
+    "ex": "We are preparing for the English test.",
+    "xz": "我们正在为英语考试做准备。"
+  },
+  {
+    "w": "protect",
+    "p": "v.",
+    "zh": "保护",
+    "ex": "Wear a helmet to protect your head.",
+    "xz": "戴头盔保护你的头部。"
+  },
+  {
+    "w": "proud",
+    "p": "adj.",
+    "zh": "自豪的",
+    "ex": "I am proud of my country.",
+    "xz": "我为我的祖国感到自豪。"
+  },
+  {
+    "w": "realize",
+    "p": "v.",
+    "zh": "意识到；实现",
+    "ex": "I realized I had made a mistake.",
+    "xz": "我意识到自己犯了个错误。"
+  },
+  {
+    "w": "recognize",
+    "p": "v.",
+    "zh": "认出；识别",
+    "ex": "I didn't recognize him with the new haircut.",
+    "xz": "他换了新发型，我没认出来。"
+  },
+  {
+    "w": "refuse",
+    "p": "v.",
+    "zh": "拒绝",
+    "ex": "He refused to give up.",
+    "xz": "他拒绝放弃。"
+  },
+  {
+    "w": "society",
+    "p": "n.",
+    "zh": "社会",
+    "ex": "We should care about society.",
+    "xz": "我们应该关心社会。"
+  },
+  {
+    "w": "succeed",
+    "p": "v.",
+    "zh": "成功",
+    "ex": "If you keep trying, you will succeed.",
+    "xz": "如果你坚持尝试，就会成功。"
+  },
+  {
+    "w": "suggest",
+    "p": "v.",
+    "zh": "建议",
+    "ex": "I suggest going by train.",
+    "xz": "我建议坐火车去。"
+  },
+  {
+    "w": "tradition",
+    "p": "n.",
+    "zh": "传统",
+    "ex": "Eating mooncakes is a Chinese tradition.",
+    "xz": "吃月饼是中国的传统。"
+  },
+  {
+    "w": "unique",
+    "p": "adj.",
+    "zh": "独特的",
+    "ex": "Everyone is unique in this world.",
+    "xz": "世界上每个人都是独一无二的。"
+  },
+  {
+    "w": "valuable",
+    "p": "adj.",
+    "zh": "宝贵的；有价值的",
+    "ex": "Time is the most valuable thing.",
+    "xz": "时间是最宝贵的东西。"
+  }
+]

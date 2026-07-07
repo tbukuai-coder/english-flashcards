@@ -179,10 +179,17 @@
   .opts{display:grid; gap:10px; margin-top:16px}
   .opt{
     background:var(--panel); border:1.5px solid var(--line); border-radius:16px;
-    padding:15px 18px; font-size:17px; font-weight:600; text-align:left; cursor:pointer; color:var(--ink);
+    padding:13px 16px; font-size:17px; font-weight:600; text-align:left; cursor:pointer; color:var(--ink);
     transition:transform .1s ease, border-color .15s ease; touch-action:manipulation;
-    box-shadow:var(--shadow);
+    box-shadow:var(--shadow); display:flex; align-items:center; gap:12px;
   }
+  .opt .k{
+    width:28px; height:28px; flex:none; display:grid; place-items:center; border-radius:9px;
+    background:color-mix(in srgb,var(--lv) 12%,var(--panel)); color:var(--lv);
+    font-size:13px; font-weight:800;
+  }
+  .opt.right .k{background:var(--good); color:#fff}
+  .opt.wrong .k{background:var(--bad); color:#fff}
   .opt:hover{border-color:color-mix(in srgb,var(--lv) 55%,var(--line))}
   .opt:active{transform:scale(.98)}
   .opt.right{border-color:var(--good); background:color-mix(in srgb, var(--good) 14%, var(--panel)); font-weight:800}
@@ -699,10 +706,15 @@ function renderQuiz(){
   const opts = shuffle([it, ...wrongs]);
   const box = $("qOpts");
   box.innerHTML = "";
-  opts.forEach(opt => {
+  opts.forEach((opt, i) => {
     const btn = document.createElement("button");
     btn.className = "opt";
-    btn.textContent = dir === "e2z" ? opt.zh : opt.w;
+    const key = document.createElement("span");
+    key.className = "k";
+    key.textContent = "ABCD"[i];
+    btn.appendChild(key);
+    btn.appendChild(document.createTextNode(dir === "e2z" ? opt.zh : opt.w));
+    if(opt === it) btn.dataset.right = "1";
     btn.onclick = () => answerQuiz(btn, opt === it, it, dir);
     box.appendChild(btn);
   });
@@ -711,13 +723,21 @@ function renderQuiz(){
 function answerQuiz(btn, correct, it, dir){
   const btns = [...$("qOpts").children];
   btns.forEach(b => b.disabled = true);
-  const rightText = dir === "e2z" ? it.zh : it.w;
-  btns.find(b => b.textContent === rightText).classList.add("right");
+  btns.find(b => b.dataset.right).classList.add("right");
   if(correct) qScore++;
   else btn.classList.add("wrong");
   if(dir === "z2e") speak(it.w);
   setTimeout(() => { qIdx++; renderQuiz(); }, correct ? 700 : 1600);
 }
+
+// 桌面端支持按 A/B/C/D 键作答
+document.addEventListener("keydown", e => {
+  if(!$("quiz").classList.contains("on")) return;
+  const i = "abcd".indexOf(e.key.toLowerCase());
+  if(i < 0) return;
+  const btn = $("qOpts").children[i];
+  if(btn && !btn.disabled) btn.click();
+});
 
 function finishQuiz(){
   const pct = Math.round(qScore / qList.length * 100);

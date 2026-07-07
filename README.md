@@ -22,7 +22,7 @@ A server is needed because the word lists load from `data/*.json` via `fetch()`,
 ## Modes
 
 - **🃏 闪卡学习 (Study)** — flip cards (English front, Chinese + example back), grade yourself 认识/模糊/不认识. Uses a Leitner-style spaced-repetition system: 5 proficiency boxes with review intervals of 0/1/3/7/30 days. "不认识" resets the word to box 1 and re-queues it in the same session; a word in box 5 counts as mastered. Sessions are 12 cards: due reviews first, then new words.
-- **✅ 选择测验 (Quiz)** — 10 multiple-choice questions, randomly mixed EN→中 and 中→EN, four options each. Draws from words you've already studied when possible.
+- **✅ 选择测验 (Quiz)** — 10 multiple-choice questions, randomly mixed EN→中 and 中→EN, four options labeled A–D each (on desktop you can answer with the A/B/C/D keys). Draws from words you've already studied when possible.
 - **⌨️ 拼写练习 (Spelling)** — 8 rounds of "see the Chinese, type the English word", with a first-letter hint button.
 
 Pronunciation uses the browser's built-in Web Speech API (🔊 buttons; auto-plays on new cards and EN→中 quiz questions).
